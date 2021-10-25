@@ -1,30 +1,26 @@
-import React, { useContext, useEffect } from "react";
-import { MoreHorizontal } from "react-feather";
-import { useHistory } from "react-router";
-import { Image } from "../..";
-import { AppProvider, InsideApiService, Routers, Validator } from "../../../share";
+import React, {useContext, useEffect} from "react";
+import {MoreHorizontal} from "react-feather";
+import {Image} from "../..";
+import {AppProvider, InsideApiService, Validator} from "../../../share";
 import styler from "./styler.module.scss";
 
 const PageHeader = (props: any) => {
-    const { user, dispatch } = useContext(AppProvider.context);
-    const history = useHistory();
+    const {user, dispatch} = useContext(AppProvider.context);
 
     useEffect(() => {
         if (user && Validator.isEmptyObj(user)) {
             InsideApiService.AuthService.getProfile()
                 .then((profile) => {
                     // console.log("profile", profile);
-                })
-                .catch((err) => {
-                    dispatch({ type: AppProvider.actions.LOGOUT, data: null });
-                });
+                }).catch((err) => {
+                dispatch({type: AppProvider.actions.LOGOUT, data: null});
+            });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
 
     const _logout = () => {
-        dispatch({ type: AppProvider.actions.LOGOUT, data: null });
-        history.push(Routers.LOGIN)
+        dispatch({type: AppProvider.actions.LOGOUT, data: null});
     }
 
     return (
@@ -50,7 +46,7 @@ const PageHeader = (props: any) => {
                 <div className="ml-3 flex items-center">
                     <div className={`relative flex items-center text-left ${styler.dropdown}`}>
                         <button type="button">
-                            <MoreHorizontal size={20} className="mr-3" />
+                            <MoreHorizontal size={20} className="mr-3"/>
                         </button>
                         <div
                             className={`opacity-0 invisible ${styler.dropdownMenu} transition-all duration-300 transform origin-top-right -translate-y-2 scale-95`}
@@ -88,7 +84,7 @@ const PageHeader = (props: any) => {
                                 </div>
                                 <div className="py-1">
                                     <div
-                                        className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left"
+                                        className="text-gray-700 cursor-pointer flex justify-between w-full px-4 py-2 text-sm leading-5 text-left"
                                         role="menuitem"
                                         onClick={_logout}
                                     >

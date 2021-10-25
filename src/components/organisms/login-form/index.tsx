@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react";
-import {Box, Button, TextInput} from "../../../components";
-import { AppProvider, Validator } from "../../../share";
+import {Box, Button, TextInput} from "../../index";
+import { AppProvider } from "../../../share";
 import { InsideApiService } from "../../../share";
+import Image from '../../atoms/image'
+import LogoUri from '../../../static/logo.png'
 
 const LoginForm = () => {
     const { dispatch } = useContext(AppProvider.context)
@@ -45,6 +47,9 @@ const LoginForm = () => {
 
     return (
         <Box className="w-full max-w-md">
+            <div className="pt-3 pb-5 flex justify-center">
+                <Image src={LogoUri} width={100}/>
+            </div>
             <h2 className="text-center text-2xl text-indigo-900 font-display font-semibold mt-3">
                 Đăng nhập
             </h2>

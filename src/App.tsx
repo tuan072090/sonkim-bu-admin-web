@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import AuthPage from "./pages/auth";
 import { Routers } from "./share";
 import DashBoardPage from "./pages/dashboard";
 import Categories from "./pages/categories";
@@ -15,8 +14,6 @@ const App = () => {
         <Router>
             <Switch>
                 <Route path="/" exact={true} component={DashBoardPage}/>
-
-                <Route path={Routers.LOGIN} component={AuthPage} />
 
                 <Route path={Routers.PRODUCTS} component={Product}/>
 

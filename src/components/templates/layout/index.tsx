@@ -3,7 +3,7 @@ import React, {useContext} from "react";
 import PageHeader from "../../organisms/page-header";
 import Sidebar from "../../organisms/sidebar";
 import {AppProvider} from "../../../share";
-import LoginForm from "../../../pages/auth/conponents/LoginForm";
+import LoginForm from "../../organisms/login-form";
 import ErrorDialog from "../../organisms/modal/ErrorDialog";
 import MessageDialog from "../../organisms/modal/MessageDialog";
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from '../../atoms/image'
+import LogoUri from '../../../static/logo.png'
 
 const AuthTemplate: React.FC<any> = ({ children }) => {
     return (
@@ -7,7 +8,7 @@ const AuthTemplate: React.FC<any> = ({ children }) => {
             <div className="lg:w-1/2 xl:max-w-screen-sm">
                 <div className="py-12 bg-indigo-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
                     <div className="cursor-pointer flex items-center">
-                        <Image src='/icons/logo.png' />
+                        <Image src={LogoUri} width={150}/>
                     </div>
                 </div>
                 <div className="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
