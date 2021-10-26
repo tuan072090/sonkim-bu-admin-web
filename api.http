@@ -1,13 +1,13 @@
-@baseUrl = https://api.sonkim.upme.dev
-# @baseUrl = http://localhost:1337
+# @baseUrl = https://api.sonkim.upme.dev/bu-api
+@baseUrl = http://localhost:1337/bu-api
 
 
 ### Login
-POST {{baseUrl}}/auth/local HTTP/1.1
+POST {{baseUrl}}/login HTTP/1.1
 content-type: application/json
 
 {
-    "identifier": "admin",
+    "username": "vera",
     "password": "123123"
 }
 
@@ -16,52 +16,53 @@ GET {{baseUrl}}/articles?_start=0&_limit=10&_sort=id:DESC
 Content-Type: application/json
 Authorization: Bearer <access_token>
 
-### Article count
-GET {{baseUrl}}/articles/count HTTP/1.1
-Content-Type: application/json
-Authorization: Bearer <access_token>
 
 ### Article detail
-GET {{baseUrl}}/articles/2 HTTP/1.1
+GET {{baseUrl}}/articles/3 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer <access_token>
-
-### Business unit
-GET {{baseUrl}}/business-units HTTP/1.1
-Content-Type: application/json
-Authorization: Bearer <access_token>
-
-### Business unit detail
-GET {{baseUrl}}/business-units/7 HTTP/1.1
-Content-Type: application/json
-Authorization: Bearer <access_token>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYnVzIjpbMyw5XSwiaWF0IjoxNjM1MjIxOTQxLCJleHAiOjE2Mzc4MTM5NDF9.cOjvsAojgr0XboM_-87N0Nq6XTWa8u2Bcnrnpb7s9ds
 
 ### Loyalty programs
-GET {{baseUrl}}/loyalty-programs HTTP/1.1
+GET {{baseUrl}}/loyalty-programs?_start=0&_limit=10&_sort=id:DESC
 Content-Type: application/json
 Authorization: Bearer <access_token>
 
-### Loyalty programs detail
-GET {{baseUrl}}/loyalty-programs/3 HTTP/1.1
-Content-Type: application/json
-Authorization: Bearer <access_token>
 
-###  Promotions
-GET {{baseUrl}}/promotions HTTP/1.1
+### Loyalty program detail
+GET {{baseUrl}}/loyalty-programs/4 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer <access_token>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYnVzIjpbMyw5XSwiaWF0IjoxNjM1MjIxOTQxLCJleHAiOjE2Mzc4MTM5NDF9.cOjvsAojgr0XboM_-87N0Nq6XTWa8u2Bcnrnpb7s9ds
 
-###  Promotion detail
-GET {{baseUrl}}/promotions/2 HTTP/1.1
+### Promotions
+GET {{baseUrl}}/promotions?_start=0&_limit=10&_sort=id:DESC
 Content-Type: application/json
-Authorization: Bearer <access_token>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYnVzIjpbMyw5XSwiaWF0IjoxNjM1MjIxOTQxLCJleHAiOjE2Mzc4MTM5NDF9.cOjvsAojgr0XboM_-87N0Nq6XTWa8u2Bcnrnpb7s9ds
 
-###  Stores
-GET {{baseUrl}}/stores HTTP/1.1
-Content-Type: application/json
-Authorization: Bearer <access_token>
 
-###  Store detail
-GET {{baseUrl}}/stores/2 HTTP/1.1
+### Promotions detail
+GET {{baseUrl}}/promotions/4 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer <access_token>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYnVzIjpbMyw5XSwiaWF0IjoxNjM1MjIxOTQxLCJleHAiOjE2Mzc4MTM5NDF9.cOjvsAojgr0XboM_-87N0Nq6XTWa8u2Bcnrnpb7s9ds
+
+### Stores
+GET {{baseUrl}}/stores?_start=0&_limit=10&_sort=id:DESC
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYnVzIjpbMyw5XSwiaWF0IjoxNjM1MjIxOTQxLCJleHAiOjE2Mzc4MTM5NDF9.cOjvsAojgr0XboM_-87N0Nq6XTWa8u2Bcnrnpb7s9ds
+
+
+### Store detail
+GET {{baseUrl}}/stores/4 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYnVzIjpbMyw5XSwiaWF0IjoxNjM1MjIxOTQxLCJleHAiOjE2Mzc4MTM5NDF9.cOjvsAojgr0XboM_-87N0Nq6XTWa8u2Bcnrnpb7s9ds
+
+### Voucher codes
+GET {{baseUrl}}/voucher-codes?_start=0&_limit=10&_sort=id:DESC
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYnVzIjpbMyw5XSwiaWF0IjoxNjM1MjIxOTQxLCJleHAiOjE2Mzc4MTM5NDF9.cOjvsAojgr0XboM_-87N0Nq6XTWa8u2Bcnrnpb7s9ds
+
+
+### Voucher code detail
+GET {{baseUrl}}/voucher-codes/3 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYnVzIjpbMyw5XSwiaWF0IjoxNjM1MjIxOTQxLCJleHAiOjE2Mzc4MTM5NDF9.cOjvsAojgr0XboM_-87N0Nq6XTWa8u2Bcnrnpb7s9ds
+
