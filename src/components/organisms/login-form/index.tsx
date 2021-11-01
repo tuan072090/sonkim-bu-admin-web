@@ -4,6 +4,7 @@ import { AppProvider } from "../../../share";
 import { InsideApiService } from "../../../share";
 import Image from '../../atoms/image'
 import LogoUri from '../../../static/logo.png'
+import MyError from "../../../share/services/error";
 
 const LoginForm = () => {
     const { dispatch } = useContext(AppProvider.context)
@@ -40,7 +41,7 @@ const LoginForm = () => {
         } catch (err) {
             dispatch({
                 type: AppProvider.actions.UPDATE_ERROR,
-                data: err
+                data: new MyError(400, "Sai thông tin đăng nhập")
             })
         }
     }

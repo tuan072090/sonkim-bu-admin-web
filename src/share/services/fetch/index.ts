@@ -1,11 +1,9 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 import MyError from "../error";
 import LocalStorageService from "../local-storage";
-import { AuthResponseType } from "../../data-types/user";
 import {CONFIGS} from "../../configs";
 
-
-const publicRuntimeConfig = CONFIGS.REACT_APP_API_URI
+const apiUri = CONFIGS.REACT_APP_API_URI
 
 type MethodType = "GET" | "POST" | "PUT"
 
@@ -28,7 +26,7 @@ class FetchData {
         }
 
         this.axiosInstance = axios.create({
-            baseURL: publicRuntimeConfig,
+            baseURL: apiUri,
             timeout: 10000, //  10s
             headers: this.headers
         });
