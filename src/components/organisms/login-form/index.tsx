@@ -67,7 +67,7 @@ const LoginForm = () => {
                             Mật khẩu
                         </div>
                     </div>
-                    <TextInput onChange={(e) => setPass(e.target.value)} placeholder="Password" className="w-full" />
+                    <TextInput type="password" onChange={(e) => setPass(e.target.value)} placeholder="Password" className="w-full" />
                 </div>
                 <div className="my-10">
                     <Button color="green" className="w-full"

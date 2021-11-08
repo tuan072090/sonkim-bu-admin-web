@@ -3,18 +3,18 @@
 
 
 ### Login
-POST {{baseUrl}}/login HTTP/1.1
-content-type: application/json
+POST https://api.sonkim.upme.dev/auth/local HTTP/1.1
+Content-Type: application/json
 
 {
-    "username": "cgv",
+    "identifier": "cgv",
     "password": "123123"
 }
 
 ### Articles
 GET {{baseUrl}}/articles?_start=0&_limit=10&_sort=id:DESC
 Content-Type: application/json
-Authorization: Bearer <access_token>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM2MzQ2MDU3LCJleHAiOjE2Mzg5MzgwNTd9.md0QonmDdYNvSnhZ_alx5Qi9QdYdfSIzsZ7ipmVWRjg
 
 
 ### Article detail
@@ -25,7 +25,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYnVzIjpbM
 ### Loyalty programs
 GET {{baseUrl}}/loyalty-programs?_start=0&_limit=10&_sort=id:DESC
 Content-Type: application/json
-Authorization: Bearer <access_token>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM2MzQ0NjA3LCJleHAiOjE2Mzg5MzY2MDd9.aOhJdCvduGkvYW2RJvaUGMXEBTcMH2Uw1gCwls-U5to
 
 
 ### Loyalty program detail

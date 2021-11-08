@@ -9,7 +9,7 @@ import MessageDialog from "../../organisms/modal/MessageDialog";
 
 const Layout = (Component: React.ComponentType<any>) => function Comp(props: React.PropsWithChildren<any>) {
     const {user} = useContext(AppProvider.context);
-
+    console.log('user ne',user);
     if (!user) {
         return (
             <div className="p-5 w-full flex justify-center items-center">

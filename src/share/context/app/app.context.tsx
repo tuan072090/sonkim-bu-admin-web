@@ -36,6 +36,7 @@ const reducer = (state: any, action: AppActionType) => {
         case UPDATE_USER:
             LocalStorageService.SetUser(data);
             newData = { ...state, user: data };
+            console.log('data user ne',data);
             break;
         case UPDATE_MESSAGE:
             newData = { ...state, message: data };
