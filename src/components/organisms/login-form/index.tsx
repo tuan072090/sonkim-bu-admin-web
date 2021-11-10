@@ -1,6 +1,5 @@
 import React, {useState } from "react";
 import {Box, Button, TextInput} from "../../index";
-import { AppProvider } from "../../../share";
 import { InsideApiService } from "../../../share";
 import Image from '../../atoms/image'
 import LogoUri from '../../../static/logo.png'

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import styles from './modal.module.scss';
-import { AppProvider } from "../../../share";
 import Button from "../../atoms/button";
 import { useDispatch, useSelector } from "react-redux";
 import { UPDATE_ERROR } from "../../../share/reducers/modal-msg/modalMsg.reducer";

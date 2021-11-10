@@ -2,7 +2,7 @@ import React, { useEffect} from "react";
 import {MoreHorizontal} from "react-feather";
 import { useDispatch, useSelector } from "react-redux";
 import {Image} from "../..";
-import {AppProvider, InsideApiService, Validator} from "../../../share";
+import { InsideApiService, Validator} from "../../../share";
 import { LOGOUT } from "../../../share/reducers/auth/auth.reducer";
 import styler from "./styler.module.scss";
 

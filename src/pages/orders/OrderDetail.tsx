@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Box, Button, Layout, Modal, Wizard } from "../../components";
-import { AppProvider, InsideApiService, OrderType } from "../../share";
+import { InsideApiService, OrderType } from "../../share";
 import Loader from "../../components/atoms/loader";
 import TextInput from "../../components/atoms/text-input";
 

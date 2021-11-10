@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { AppProvider } from "../../share";
 import {
     Alert,
     Box,
