@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { AppProvider } from "../../share";
 import {
     Alert,
@@ -11,11 +11,14 @@ import {
     Layout,
 } from "../../components";
 import Modal from "../../components/organisms/modal";
+import { useSelector } from "react-redux";
 
 const DashBoardPage = Layout(
     () => {
-        const { accessToken } = useContext(AppProvider.context);
-        const { version } = useContext(AppProvider.context);
+        //@ts-ignore
+        const {accessToken}=useSelector(state=>state.auth);
+        //@ts-ignore
+        const {version}=useSelector(state=>state.version)
         const [toggleVal, setToggleVal] = useState(false);
 
         const [showModal, setShowModal] = useState(false);

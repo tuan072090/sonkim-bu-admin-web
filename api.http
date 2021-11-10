@@ -14,40 +14,40 @@ Content-Type: application/json
 ### Articles
 GET {{baseUrl}}/articles?_start=0&_limit=10&_sort=id:DESC
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM2MzQ2MDU3LCJleHAiOjE2Mzg5MzgwNTd9.md0QonmDdYNvSnhZ_alx5Qi9QdYdfSIzsZ7ipmVWRjg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM2NTI2NjMxLCJleHAiOjE2MzY3ODU4MzF9.CmRVxsQ2Ac_LeCijYHPDaVkdCQKsCJ-NvfnXPwo_Jmw
 
 
 ### Article detail
 GET {{baseUrl}}/articles/3 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYnVzIjpbMyw5XSwiaWF0IjoxNjM1MjIxOTQxLCJleHAiOjE2Mzc4MTM5NDF9.cOjvsAojgr0XboM_-87N0Nq6XTWa8u2Bcnrnpb7s9ds
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM2NTI2NjMxLCJleHAiOjE2MzY3ODU4MzF9.CmRVxsQ2Ac_LeCijYHPDaVkdCQKsCJ-NvfnXPwo_Jmw
 
 ### Loyalty programs
 GET {{baseUrl}}/loyalty-programs?_start=0&_limit=10&_sort=id:DESC
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM2MzQ0NjA3LCJleHAiOjE2Mzg5MzY2MDd9.aOhJdCvduGkvYW2RJvaUGMXEBTcMH2Uw1gCwls-U5to
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM2NTI2NjMxLCJleHAiOjE2MzY3ODU4MzF9.CmRVxsQ2Ac_LeCijYHPDaVkdCQKsCJ-NvfnXPwo_Jmw
 
 
 ### Loyalty program detail
 GET {{baseUrl}}/loyalty-programs/4 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYnVzIjpbMyw5XSwiaWF0IjoxNjM1MjIxOTQxLCJleHAiOjE2Mzc4MTM5NDF9.cOjvsAojgr0XboM_-87N0Nq6XTWa8u2Bcnrnpb7s9ds
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM2NTI2NjMxLCJleHAiOjE2MzY3ODU4MzF9.CmRVxsQ2Ac_LeCijYHPDaVkdCQKsCJ-NvfnXPwo_Jmw
 
 ### Promotions
 GET {{baseUrl}}/promotions?_start=0&_limit=10&_sort=id:DESC
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYnVzIjpbMyw5XSwiaWF0IjoxNjM1MjIxOTQxLCJleHAiOjE2Mzc4MTM5NDF9.cOjvsAojgr0XboM_-87N0Nq6XTWa8u2Bcnrnpb7s9ds
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM2NTI2NjMxLCJleHAiOjE2MzY3ODU4MzF9.CmRVxsQ2Ac_LeCijYHPDaVkdCQKsCJ-NvfnXPwo_Jmw
 
 
 ### Promotions detail
 GET {{baseUrl}}/promotions/4 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYnVzIjpbMyw5XSwiaWF0IjoxNjM1MjIxOTQxLCJleHAiOjE2Mzc4MTM5NDF9.cOjvsAojgr0XboM_-87N0Nq6XTWa8u2Bcnrnpb7s9ds
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM2NTI2NjMxLCJleHAiOjE2MzY3ODU4MzF9.CmRVxsQ2Ac_LeCijYHPDaVkdCQKsCJ-NvfnXPwo_Jmw
 
 ### Stores
 GET {{baseUrl}}/stores?_start=0&_limit=10&_sort=id:DESC
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYnVzIjpbMyw5XSwiaWF0IjoxNjM1MjIxOTQxLCJleHAiOjE2Mzc4MTM5NDF9.cOjvsAojgr0XboM_-87N0Nq6XTWa8u2Bcnrnpb7s9ds
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM2NTI2NjMxLCJleHAiOjE2MzY3ODU4MzF9.CmRVxsQ2Ac_LeCijYHPDaVkdCQKsCJ-NvfnXPwo_Jmw
 
 
 ### Store detail

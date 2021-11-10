@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect, useState } from "react";
-import { AppProvider } from "../../../share";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { UPDATE_ERROR } from "../../../share/reducers/modal-msg/modalMsg.reducer";
 import Table from "./Table";
 import { Structure } from "./table.types";
 
@@ -11,7 +12,7 @@ const Tables: React.FC<Structure> = ({
     itemsPerPageOptions = [10, 20, 30, 40],
     title,
 }) => {
-    const { dispatch } = useContext(AppProvider.context);
+    const dispatch=useDispatch();
     const [isInited, setIsInited] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [pageNumber, setPageNumber] = useState(defaultPageNumber);
@@ -53,8 +54,8 @@ const Tables: React.FC<Structure> = ({
                     // Set error message
                     if (response.errorMessage) {
                         dispatch({
-                            type: AppProvider.actions.UPDATE_ERROR,
-                            data: response.errorMessage,
+                            type: UPDATE_ERROR,
+                            payload: response.errorMessage,
                         });
                     }
                 }

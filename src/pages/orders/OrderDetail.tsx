@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Box, Button, Layout, Modal, Wizard } from "../../components";
 import { AppProvider, InsideApiService, OrderType } from "../../share";
@@ -9,6 +9,8 @@ import TextInput from "../../components/atoms/text-input";
 import TableBody from "../../components/templates/table/TableBody";
 import { FormatVND } from "../../share/utils/formater";
 import moment from "moment";
+import { useDispatch } from "react-redux";
+import { UPDATE_ERROR } from "../../share/reducers/modal-msg/modalMsg.reducer";
 
 const CartAddress = ({ title = "", name = "", phone = "", address = "" }) => {
     return (
@@ -26,7 +28,7 @@ const CartAddress = ({ title = "", name = "", phone = "", address = "" }) => {
 
 
 const OrderDetail = Layout(() => {
-    const { dispatch } = useContext(AppProvider.context);
+    const dispatch=useDispatch();
     const [order, setOrder] = useState<OrderType | null>(null);
     const [toRecieve, setToRecieve] = useState<boolean>(false)
 
@@ -39,7 +41,7 @@ const OrderDetail = Layout(() => {
                     setOrder(data);
                 })
                 .catch((err) => {
-                    dispatch({ type: AppProvider.actions.UPDATE_ERROR, data: err });
+                    dispatch({ type: UPDATE_ERROR, payload: err });
                 });
         }
     }, [params]);

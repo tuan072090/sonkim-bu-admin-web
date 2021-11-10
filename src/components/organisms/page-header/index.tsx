@@ -1,11 +1,15 @@
-import React, {useContext, useEffect} from "react";
+import React, { useEffect} from "react";
 import {MoreHorizontal} from "react-feather";
+import { useDispatch, useSelector } from "react-redux";
 import {Image} from "../..";
 import {AppProvider, InsideApiService, Validator} from "../../../share";
+import { LOGOUT } from "../../../share/reducers/auth/auth.reducer";
 import styler from "./styler.module.scss";
 
 const PageHeader = (props: any) => {
-    const {user, dispatch} = useContext(AppProvider.context);
+    //@ts-ignore
+    const {user}=useSelector(state=>state.auth);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (user && Validator.isEmptyObj(user)) {
@@ -13,14 +17,14 @@ const PageHeader = (props: any) => {
                 .then((profile) => {
                     // console.log("profile", profile);
                 }).catch((err) => {
-                dispatch({type: AppProvider.actions.LOGOUT, data: null});
+                dispatch({type: LOGOUT, payload: null});
             });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
 
     const _logout = () => {
-        dispatch({type: AppProvider.actions.LOGOUT, data: null});
+        dispatch({type: LOGOUT, payload: null});
     }
 
     return (

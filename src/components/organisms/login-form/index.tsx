@@ -1,13 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, {useState } from "react";
 import {Box, Button, TextInput} from "../../index";
 import { AppProvider } from "../../../share";
 import { InsideApiService } from "../../../share";
 import Image from '../../atoms/image'
 import LogoUri from '../../../static/logo.png'
 import MyError from "../../../share/services/error";
+import { useDispatch } from "react-redux";
+import { UPDATE_ACCESS_TOKEN, UPDATE_USER } from "../../../share/reducers/auth/auth.reducer";
+import { UPDATE_ERROR, UPDATE_MESSAGE } from "../../../share/reducers/modal-msg/modalMsg.reducer";
+import { useHistory } from "react-router";
 
 const LoginForm = () => {
-    const { dispatch } = useContext(AppProvider.context)
+    const dispatch = useDispatch();
+    const history=useHistory();
 
     const [username, setUsername] = useState("");
     const [pass, setPass] = useState('');
@@ -25,23 +30,24 @@ const LoginForm = () => {
             console.log("user", user)
 
             dispatch({
-                type: AppProvider.actions.UPDATE_ACCESS_TOKEN,
-                data: jwt
+                type: UPDATE_ACCESS_TOKEN,
+                payload: jwt
             })
 
             dispatch({
-                type: AppProvider.actions.UPDATE_USER,
-                data: user
+                type: UPDATE_USER,
+                payload: user
             })
             dispatch({
-                type: AppProvider.actions.UPDATE_MESSAGE,
-                data: { status: "success", title: "Đăng nhập thành công" }
+                type: UPDATE_MESSAGE,
+                payload: { status: "success", title: "Đăng nhập thành công" }
             })
+            history.push('/');
 
         } catch (err) {
             dispatch({
-                type: AppProvider.actions.UPDATE_ERROR,
-                data: new MyError(400, "Sai thông tin đăng nhập")
+                type: UPDATE_ERROR,
+                payload: new MyError(400, "Sai thông tin đăng nhập")
             })
         }
     }

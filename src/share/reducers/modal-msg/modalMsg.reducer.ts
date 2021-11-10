@@ -1,8 +1,8 @@
 import { ActionType } from "../action.type";
 import { ModalMsgType } from "./modalMsg.type";
 
-const UPDATE_MESSAGE='UPDATE_MESSAGE';
-const UPDATE_ERROR='UPDATE_ERROR';
+export const UPDATE_MESSAGE='UPDATE_MESSAGE';
+export const UPDATE_ERROR='UPDATE_ERROR';
 
 const initialState:ModalMsgType={
     message:null,

@@ -1,7 +1,7 @@
 import { ActionType } from "../action.type"
 import { VersionType } from "./version.type"
 
-const UPDATE_VERSION='UPDATE_VERSION'
+export const UPDATE_VERSION='UPDATE_VERSION'
 
 const initialState:VersionType={
     version:"1.0.0",
