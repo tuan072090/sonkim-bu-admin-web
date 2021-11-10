@@ -5,8 +5,8 @@ const UPDATE_MESSAGE='UPDATE_MESSAGE';
 const UPDATE_ERROR='UPDATE_ERROR';
 
 const initialState:ModalMsgType={
-    message:'',
-    error:'',
+    message:null,
+    error:null,
 };
 
 const modalMsgReducer=(state=initialState,action:ActionType)=>{

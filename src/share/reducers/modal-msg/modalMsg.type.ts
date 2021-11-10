@@ -1,4 +1,7 @@
+import { MessageType } from "../../data-types/message";
+import MyError from "../../services/error";
+
 export type ModalMsgType={
-    message:string|null,
-    error:string|null
+    message:MessageType | null,
+    error:MyError | null
 }
