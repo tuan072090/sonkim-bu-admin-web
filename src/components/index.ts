@@ -20,6 +20,7 @@ import Modal from "./organisms/modal";
 import PageHeader from "./organisms/page-header";
 import Sidebar from "./organisms/sidebar";
 import Wizard from "./organisms/wizard"
+import DataTableBase from './organisms/data-table';
 
 //  templates
 import Layout from "./templates/layout";
@@ -46,6 +47,7 @@ export {
     PageHeader,
     Sidebar,
     Wizard,
+    DataTableBase,
     //  templates
     Layout,
     Table,

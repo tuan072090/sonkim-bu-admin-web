@@ -8,6 +8,7 @@ import OrdersPage from "./pages/orders";
 import NotificationsPage from "./pages/notifications";
 import WarehousePage from "./pages/warehouse";
 import OrderDetail from "./pages/orders/OrderDetail";
+import ArticlesPage from "./pages/articles";
 
 const App = () => {
     return (
@@ -23,6 +24,7 @@ const App = () => {
                 <Route path={Routers.ORDERS} component={OrdersPage}/>
 
                 <Route path={Routers.NOTIFICATIONS} component={NotificationsPage}/>
+                <Route path={Routers.ARTICLES} component={ArticlesPage}/>
 
                 <Route path={Routers.WAREHOUSE} component={WarehousePage}/>
 

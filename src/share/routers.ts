@@ -8,7 +8,8 @@ const Routers = {
     PRODUCTS: '/products',
     CATEGORIES: '/categories',
     WAREHOUSE: '/warehouse',
-    PROFILE: '/profile'
+    PROFILE: '/profile',
+    ARTICLES:'/articles',
 }
 
 export default Routers
