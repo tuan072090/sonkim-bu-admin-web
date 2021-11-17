@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "../../atoms/image";
-import { Archive, Bell, FilePlus, Grid, Home, List, Menu, Settings, ShoppingCart, Truck,Book } from 'react-feather'
+import { Archive, Bell, FilePlus, Grid, Home, List, Menu, Settings, ShoppingCart, Truck,Book, Heart } from 'react-feather'
 import MenuItem from "../../molecules/menu-item";
 import MenuIcon from "../../molecules/menu-item/MenuIcon";
 import { Routers, useLocalStorage } from "../../../share";
@@ -24,19 +24,14 @@ const Sidebar = () => {
 
                 <div className="py-3 mt-3 flex-grow">
                     <MenuIcon href={Routers.HOME} active={location.pathname === Routers.HOME} icon={<Home size={20} />} />
-                    {/* <MenuIcon href={Routers.NOTIFICATIONS} active={location.pathname === Routers.NOTIFICATIONS}
-                        icon={<Bell size={20} />} /> */}
                     <MenuIcon href={Routers.ARTICLES} active={location.pathname === Routers.ARTICLES}
                         icon={<Book size={20} />} />
-                    <MenuIcon href={Routers.CATEGORIES} active={location.pathname === Routers.CATEGORIES}
+                    <MenuIcon href={Routers.LOYALTY_PROGRAMS} active={location.pathname === Routers.LOYALTY_PROGRAMS}
                         icon={<Grid size={20} />} />
-                    <MenuIcon href={Routers.PRODUCTS} active={location.pathname === Routers.PRODUCTS}
+                    <MenuIcon href={Routers.PROMOTIONS} active={location.pathname === Routers.PROMOTIONS}
+                        icon={<Heart size={20} />} />
+                    <MenuIcon href={Routers.STORES} active={location.pathname === Routers.STORES}
                         icon={<Archive size={20} />} />
-                    <MenuIcon href={Routers.ORDERS} active={location.pathname === Routers.ORDERS}
-                        icon={<ShoppingCart size={20} />} />
-                    <MenuIcon href={Routers.WAREHOUSE} active={location.pathname === Routers.WAREHOUSE}
-                        icon={<Truck size={20} />} />
-
                 </div>
 
                 <div className="flex-shrink-0 border-t border-gray-200">

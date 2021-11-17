@@ -10,6 +10,9 @@ const Routers = {
     WAREHOUSE: '/warehouse',
     PROFILE: '/profile',
     ARTICLES:'/articles',
+    PROMOTIONS:'/promotions',
+    STORES:'/stores',
+    LOYALTY_PROGRAMS:'/loyalty-programs',
 }
 
 export default Routers

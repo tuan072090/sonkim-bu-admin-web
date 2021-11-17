@@ -14,6 +14,7 @@ const DataTableBase=(props:any)=> {
             pointerOnHover
             striped
             selectableRowsHighlight
+            fixedHeader
             responsive={true}
             {...props}
         ></DataTable>

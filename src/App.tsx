@@ -9,6 +9,9 @@ import NotificationsPage from "./pages/notifications";
 import WarehousePage from "./pages/warehouse";
 import OrderDetail from "./pages/orders/OrderDetail";
 import ArticlesPage from "./pages/articles";
+import LoyaltyProgramsPage from "./pages/loyalty-programs";
+import PromotionsPage from "./pages/promotions";
+import StoresPage from "./pages/stores";
 
 const App = () => {
     return (
@@ -25,6 +28,9 @@ const App = () => {
 
                 <Route path={Routers.NOTIFICATIONS} component={NotificationsPage}/>
                 <Route path={Routers.ARTICLES} component={ArticlesPage}/>
+                <Route path={Routers.LOYALTY_PROGRAMS} component={LoyaltyProgramsPage}/>
+                <Route path={Routers.PROMOTIONS} component={PromotionsPage}/>
+                <Route path={Routers.STORES} component={StoresPage}/>
 
                 <Route path={Routers.WAREHOUSE} component={WarehousePage}/>
 
