@@ -3,9 +3,9 @@ import { TableColumn } from 'react-data-table-component';
 import { DataTableBase, Layout } from '../../components'
 import Loader from '../../components/atoms/loader';
 import { InsideApiService } from '../../share';
-import { DataRow } from './loyaltyPrograms.type';
+import { LoyaltyProgramDataRow } from '../../share/data-types/loyalty-program';
 
-const columns:TableColumn<DataRow>[]=[
+const columns:TableColumn<LoyaltyProgramDataRow>[]=[
     {
         name:"ID",
         cell: (row)=> <a href="#">{row.id}</a>,
@@ -24,11 +24,14 @@ const columns:TableColumn<DataRow>[]=[
         name: "Image",
         cell:row=><img src={row.avatar.formats.thumbnail.url}/>,
         reorder:true,
+        center:true
     },
     {
         name:"BU",
         cell:row=><img src={row.business_unit.logo.formats.thumbnail.url}/>,
         reorder:true,
+        center:true
+
     },
     {
         name:'Level',
@@ -44,6 +47,8 @@ const columns:TableColumn<DataRow>[]=[
         name:"Point System",
         cell:row=><img src={row.point_system.icon.formats.thumbnail.url}/>,
         reorder:true,
+        center:true
+
     },
 ]
 
