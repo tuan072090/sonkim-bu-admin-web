@@ -21,7 +21,7 @@ const columns:TableColumn<StoreDataRow>[]=[
     },
     {
         name: "Image",
-        cell:row=><img src={row.avatar.formats.thumbnail.url}/>,
+        cell:row=><img src={row.avatar.formats.thumbnail.url} width={row.avatar.formats.thumbnail.width} height={row.avatar.formats.thumbnail.height}/>,
         reorder:true,
         center:true
     },
@@ -32,7 +32,7 @@ const columns:TableColumn<StoreDataRow>[]=[
     },
     {
         name: "BU",
-        cell:row=><img src={row.business_unit.logo.formats.thumbnail.url}/>,
+        cell:row=><img src={row.business_unit.logo.formats.thumbnail.url} width={row.business_unit.logo.formats.thumbnail.width} height={row.business_unit.logo.formats.thumbnail.height}/>,
         reorder:true,
         center:true
     },

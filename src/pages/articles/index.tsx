@@ -3,11 +3,12 @@ import DataTable, { TableColumn } from "react-data-table-component";
 import { Link } from "react-router-dom";
 import { DataTableBase, Layout } from "../../components";
 import Loader from "../../components/atoms/loader";
+import { ThumbnailType } from "../../share/data-types/image";
 import InsideApi from "../../share/services/insite-api";
 interface DataRow {
     id: number;
     title: string;
-    avatar: { formats:{thumbnail:{url:string,width:number,height:number}} };
+    avatar: ThumbnailType;
 }
 
 const columns: TableColumn<DataRow>[] = [

@@ -22,13 +22,13 @@ const columns:TableColumn<LoyaltyProgramDataRow>[]=[
     },
     {
         name: "Image",
-        cell:row=><img src={row.avatar.formats.thumbnail.url}/>,
+        cell:row=><img src={row.avatar.formats.thumbnail.url} width={row.avatar.formats.thumbnail.width} height={row.avatar.formats.thumbnail.height}/>,
         reorder:true,
         center:true
     },
     {
         name:"BU",
-        cell:row=><img src={row.business_unit.logo.formats.thumbnail.url}/>,
+        cell:row=><img src={row.business_unit.logo.formats.thumbnail.url} width={row.business_unit.logo.formats.thumbnail.width} height={row.business_unit.logo.formats.thumbnail.height}/>,
         reorder:true,
         center:true
 
@@ -45,10 +45,9 @@ const columns:TableColumn<LoyaltyProgramDataRow>[]=[
     },
     {
         name:"Point System",
-        cell:row=><img src={row.point_system.icon.formats.thumbnail.url}/>,
+        cell:row=><img src={row.point_system.icon.formats.thumbnail.url} width={row.point_system.icon.formats.thumbnail.width} height={row.point_system.icon.formats.thumbnail.height}/>,
         reorder:true,
         center:true
-
     },
 ]
 

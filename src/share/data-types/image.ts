@@ -1,7 +1,9 @@
 export interface ThumbnailType{
     formats:{
         thumbnail:{
-            url:string
+            url:string,
+            width:number,
+            height:number
         }
     }
 }

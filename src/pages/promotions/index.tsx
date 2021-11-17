@@ -32,7 +32,7 @@ const columns:TableColumn<PromotionDataRow>[]=[
     },
     {
         name: "Image",
-        cell:row=><img src={row.avatar.formats.thumbnail.url}/>,
+        cell:row=><img src={row.avatar.formats.thumbnail.url} width={row.avatar.formats.thumbnail.width} height={row.avatar.formats.thumbnail.height}/>,
         reorder:true,
         center:true
     },
