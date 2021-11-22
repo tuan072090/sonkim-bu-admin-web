@@ -57,7 +57,6 @@
         "@types/react-router-dom": "^5.1.9",
         "autoprefixer": "^9",
         "postcss": "^7",
-        "react-data-table-component-extensions": "^1.5.2",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.16"
     }
 }

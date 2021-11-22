@@ -53,17 +53,22 @@ const ArticlesPage: React.FC = Layout(() => {
         _fetchArticles();
     }, []);
 
+    
+
 
     return (
         <div>
             {loading ? (
-                <Loader></Loader>
+                <div className="flex justify-center items-center">
+                    <Loader status="info"></Loader>
+                </div>
+
             ) : (
-                <DataTableBase
-                    title="Articles List"
-                    columns={columns} 
-                    data={articles}
-                ></DataTableBase>
+            <DataTableBase
+                title="Articles List"
+                columns={columns} 
+                data={articles}
+            ></DataTableBase>
             )}
         </div>
     );

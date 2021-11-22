@@ -30,7 +30,7 @@ const PageHeader = (props: any) => {
     return (
         <div className="w-full px-5 h-14 flex items-center justify-between bg-white border-gray-200 border-b">
             <div className="flex">
-                <h2 className="text-xl">Page title here</h2>
+                <h2 className="text-xl">BU-Admin Dashboard</h2>
             </div>
 
             <div className="flex text-sm text-gray-500 border-l border-gray-200">
