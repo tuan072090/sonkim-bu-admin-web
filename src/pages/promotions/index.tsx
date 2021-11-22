@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { TableColumn } from "react-data-table-component";
 import { DataTableBase, Layout } from "../../components";
 import Loader from "../../components/atoms/loader";
+import { Routers } from "../../share";
 import { PromotionDataRow } from "../../share/data-types/promotion";
 import insiteApi from "../../share/services/insite-api";
 import { FormatVND } from "../../share/utils/formater";
@@ -9,7 +10,7 @@ import { FormatVND } from "../../share/utils/formater";
 const columns: TableColumn<PromotionDataRow>[] = [
     {
         name: "ID",
-        cell: (row) => <a href="#">{row.id}</a>,
+        cell: (row) => <a href={Routers.PROMOTIONS+`/${row.id}`}>{row.id}</a>,
         sortable: true,
         reorder: true,
     },

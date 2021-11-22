@@ -6,11 +6,10 @@ import LoyaltyService from "./loyalty";
 import PromotionService from "./promotions";
 import StoreService from "./stores";
 import VoucherCodeService from "./voucher-codes";
-import CategoryServices from "./categories";
 import OrderServices from "./orders";
 
 export default {
     AuthService, ArticleService,LoyaltyService,PromotionService,StoreService,VoucherCodeService,
-    CategoryServices,OrderServices
+    OrderServices
 }
 

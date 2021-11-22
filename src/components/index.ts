@@ -24,7 +24,6 @@ import DataTableBase from './organisms/data-table';
 
 //  templates
 import Layout from "./templates/layout";
-import Table from "./templates/table"
 
 
 export {
@@ -50,5 +49,4 @@ export {
     DataTableBase,
     //  templates
     Layout,
-    Table,
 }

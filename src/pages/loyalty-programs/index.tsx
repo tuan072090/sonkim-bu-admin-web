@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { TableColumn } from "react-data-table-component";
 import { DataTableBase, Layout } from "../../components";
 import Loader from "../../components/atoms/loader";
-import { InsideApiService } from "../../share";
+import { InsideApiService, Routers } from "../../share";
 import { LoyaltyProgramDataRow } from "../../share/data-types/loyalty-program";
 
 const columns: TableColumn<LoyaltyProgramDataRow>[] = [
     {
         name: "ID",
-        cell: (row) => <a href="#">{row.id}</a>,
+        cell: (row) => <a href={Routers.LOYALTY_PROGRAMS+`/${row.id}`}>{row.id}</a>,
         sortable: true,
         reorder: true,
         width: "100px",

@@ -3,6 +3,7 @@ import DataTable, { TableColumn } from "react-data-table-component";
 import { Link } from "react-router-dom";
 import { DataTableBase, Layout } from "../../components";
 import Loader from "../../components/atoms/loader";
+import { Routers } from "../../share";
 import { ThumbnailType } from "../../share/data-types/image";
 import InsideApi from "../../share/services/insite-api";
 interface DataRow {
@@ -14,7 +15,7 @@ interface DataRow {
 const columns: TableColumn<DataRow>[] = [
     {
         name: "ID",
-        cell: (row) => <a href="#">{row.id}</a>,
+        cell: (row) => <a href={Routers.ARTICLES+`/${row.id}`}>{row.id}</a>,
         sortable: true,
         reorder:true,
         width: '100px',
