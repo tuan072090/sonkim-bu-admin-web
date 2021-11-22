@@ -8,7 +8,9 @@ import { LoyaltyProgramDataRow } from "../../share/data-types/loyalty-program";
 const columns: TableColumn<LoyaltyProgramDataRow>[] = [
     {
         name: "ID",
-        cell: (row) => <a href={Routers.LOYALTY_PROGRAMS+`/${row.id}`}>{row.id}</a>,
+        cell: (row) => (
+            <a href={Routers.LOYALTY_PROGRAMS + `/${row.id}`}>{row.id}</a>
+        ),
         sortable: true,
         reorder: true,
         width: "100px",

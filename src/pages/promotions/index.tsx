@@ -10,7 +10,7 @@ import { FormatVND } from "../../share/utils/formater";
 const columns: TableColumn<PromotionDataRow>[] = [
     {
         name: "ID",
-        cell: (row) => <a href={Routers.PROMOTIONS+`/${row.id}`}>{row.id}</a>,
+        cell: (row) => <a href={Routers.PROMOTIONS + `/${row.id}`}>{row.id}</a>,
         sortable: true,
         reorder: true,
     },

@@ -15,27 +15,30 @@ interface DataRow {
 const columns: TableColumn<DataRow>[] = [
     {
         name: "ID",
-        cell: (row) => <a href={Routers.ARTICLES+`/${row.id}`}>{row.id}</a>,
+        cell: (row) => <a href={Routers.ARTICLES + `/${row.id}`}>{row.id}</a>,
         sortable: true,
-        reorder:true,
-        width: '100px',
+        reorder: true,
+        width: "100px",
     },
     {
         name: "Title",
         selector: (row) => row.title,
         sortable: true,
-        reorder:true,
-        wrap:true,
-
-
+        reorder: true,
+        wrap: true,
     },
     {
         name: "Image",
-        cell:row=><img src={row.avatar.formats.thumbnail.url} width={row.avatar.formats.thumbnail.width} height={row.avatar.formats.thumbnail.height}/>,
-        reorder:true,
+        cell: (row) => (
+            <img
+                src={row.avatar.formats.thumbnail.url}
+                width={row.avatar.formats.thumbnail.width}
+                height={row.avatar.formats.thumbnail.height}
+            />
+        ),
+        reorder: true,
     },
 ];
-
 
 const ArticlesPage: React.FC = Layout(() => {
     const [articles, setArticles] = useState<any>(null);
@@ -54,22 +57,18 @@ const ArticlesPage: React.FC = Layout(() => {
         _fetchArticles();
     }, []);
 
-    
-
-
     return (
         <div>
             {loading ? (
                 <div className="flex justify-center items-center">
                     <Loader status="info"></Loader>
                 </div>
-
             ) : (
-            <DataTableBase
-                title="Articles List"
-                columns={columns} 
-                data={articles}
-            ></DataTableBase>
+                <DataTableBase
+                    title="Articles List"
+                    columns={columns}
+                    data={articles}
+                ></DataTableBase>
             )}
         </div>
     );

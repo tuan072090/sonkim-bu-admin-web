@@ -9,7 +9,7 @@ import insiteApi from "../../share/services/insite-api";
 const columns: TableColumn<StoreDataRow>[] = [
     {
         name: "ID",
-        cell: (row) => <a href={Routers.STORES+`/${row.id}`}>{row.id}</a>,
+        cell: (row) => <a href={Routers.STORES + `/${row.id}`}>{row.id}</a>,
         sortable: true,
         reorder: true,
     },
