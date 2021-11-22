@@ -1,8 +1,27 @@
 import React from 'react'
 import DataTable from 'react-data-table-component'
-import { ArrowDown } from 'react-feather';
 //@ts-ignore
 const selectProps = { indeterminate: isIndeterminate => isIndeterminate };
+const customStyles = {
+    rows: {
+        style: {
+            minHeight: '72px', // override the row height
+            padding:'8px',
+            borderRadius:'8px'
+        },
+    },
+    headCells: {
+        style: {
+            backgroundColor:'#328396',
+            color:'#ffffff',
+        },
+    },
+    cells: {
+        style: {
+            borderRadius:'8px'
+        },
+    },
+};
 
 const DataTableBase=(props:any)=> {
     return (
@@ -16,6 +35,7 @@ const DataTableBase=(props:any)=> {
             selectableRowsHighlight
             fixedHeader
             responsive={true}
+            customStyles={customStyles}
             {...props}
         ></DataTable>
     )

@@ -26,6 +26,7 @@ const columns: TableColumn<DataRow>[] = [
         sortable: true,
         reorder: true,
         wrap: true,
+        center:true
     },
     {
         name: "Image",
@@ -37,8 +38,11 @@ const columns: TableColumn<DataRow>[] = [
             />
         ),
         reorder: true,
+        center:true,
     },
 ];
+
+
 
 const ArticlesPage: React.FC = Layout(() => {
     const [articles, setArticles] = useState<any>(null);

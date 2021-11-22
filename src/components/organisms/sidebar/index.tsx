@@ -59,9 +59,9 @@ const Sidebar = () => {
 
                 <MenuItem href={Routers.PROMOTIONS} active={location.pathname === Routers.PROMOTIONS} text="Promotions" icon={<Heart size={20} />}>
                     <MenuItem.DropdownBox>
-                        <MenuItem href="/products/add" text="Thêm mới" icon={<FilePlus size={20} />} />
+                        <MenuItem href={Routers.PROMOTIONS} text="Thêm mới" icon={<FilePlus size={20} />} />
 
-                        <MenuItem href="/products" text="Danh sách" icon={<List size={20} />} />
+                        <MenuItem href={Routers.PROMOTIONS} text="Danh sách" icon={<List size={20} />} />
                     </MenuItem.DropdownBox>
                 </MenuItem>
 
