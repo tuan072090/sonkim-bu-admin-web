@@ -12,7 +12,7 @@ const VoucherCodeService={
 
     getVoucherCodeDetail:async (voucherCodeId:number)=>{
         try {
-            const {data}=await FetchDataService.GET("/bu-api/voucher-codes/"+voucherCodeId);
+            const data=await FetchDataService.GET("/bu-api/voucher-codes/"+voucherCodeId);
             return data;
         } catch (error) {
             throw error;

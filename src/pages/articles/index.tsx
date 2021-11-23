@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from "react";
-import {TableColumn} from "react-data-table-component";
-import {DataTableBase, Layout} from "../../components";
+import React, { useEffect, useState } from "react";
+import { TableColumn } from "react-data-table-component";
+import { useHistory } from "react-router";
+import { DataTableBase, Layout } from "../../components";
 import Loader from "../../components/atoms/loader";
-import {Routers} from "../../share";
-import {ThumbnailType} from "../../share/data-types/image";
+import { Routers } from "../../share";
+import { ThumbnailType } from "../../share/data-types/image";
 import InsideApi from "../../share/services/insite-api";
 
 interface DataRow {
@@ -26,7 +27,7 @@ const columns: TableColumn<DataRow>[] = [
         sortable: true,
         reorder: true,
         wrap: true,
-        center: true
+        center: true,
     },
     {
         name: "Image",
@@ -42,18 +43,23 @@ const columns: TableColumn<DataRow>[] = [
     },
 ];
 
-
 const ArticlesPage: React.FC = Layout(() => {
-    const [articles, setArticles] = useState<null|any[]>(null);
+    const [articles, setArticles] = useState<null | any[]>(null);
+    const history = useHistory();
 
     const _fetchArticles = async () => {
         try {
-            const {articles, count} =
+            const { articles, count } =
                 await InsideApi.ArticleService.getArticles();
             setArticles(articles);
         } catch (error) {
             console.log(error);
         }
+    };
+
+    const _onRowClicked = (row: any, event: React.MouseEvent) => {
+        console.log("row...", row);
+        history.push(`${Routers.ARTICLES}/${row.id}`);
     };
 
     useEffect(() => {
@@ -64,13 +70,14 @@ const ArticlesPage: React.FC = Layout(() => {
         <div>
             {!articles ? (
                 <div className="flex justify-center items-center">
-                    <Loader status="info"/>
+                    <Loader status="info" />
                 </div>
             ) : (
                 <DataTableBase
                     title="Articles List"
                     columns={columns}
                     data={articles}
+                    onRowClicked={_onRowClicked}
                 />
             )}
         </div>

@@ -12,7 +12,7 @@ const PromotionService={
 
     getPromotionDetail:async (promotionId:number)=>{
         try {
-            const {data}=await FetchDataService.GET("/bu-api/promotions/"+promotionId);
+            const data=await FetchDataService.GET("/bu-api/promotions/"+promotionId);
             return data;
         } catch (error) {
             throw error;

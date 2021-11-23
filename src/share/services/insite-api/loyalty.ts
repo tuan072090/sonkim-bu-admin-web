@@ -12,7 +12,7 @@ const LoyaltyService={
 
     getArticleDetail:async (loyaltyProgramId:number)=>{
         try {
-            const {data}=await FetchDataService.GET("/bu-api/loyalty-programs/"+loyaltyProgramId);
+            const data=await FetchDataService.GET("/bu-api/loyalty-programs/"+loyaltyProgramId);
             return data;
         } catch (error) {
             throw error;

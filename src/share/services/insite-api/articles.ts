@@ -12,7 +12,7 @@ const ArticleService={
 
     getArticleDetail:async (articleId:number)=>{
         try {
-            const {data}=await FetchDataService.GET("/bu-api/articles/"+articleId);
+            const data=await FetchDataService.GET("/bu-api/articles/"+articleId);
             return data;
         } catch (error) {
             throw error;
