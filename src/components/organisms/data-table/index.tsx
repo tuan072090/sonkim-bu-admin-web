@@ -1,7 +1,8 @@
 import React from 'react'
-import DataTable from 'react-data-table-component'
+import DataTable, {TableProps} from 'react-data-table-component'
 //@ts-ignore
 const selectProps = { indeterminate: isIndeterminate => isIndeterminate };
+
 const customStyles = {
     rows: {
         style: {
@@ -23,7 +24,9 @@ const customStyles = {
     },
 };
 
-const DataTableBase=(props:any)=> {
+
+
+const DataTableBase=(props:TableProps<any>)=> {
     return (
         <DataTable
             pagination
@@ -37,7 +40,7 @@ const DataTableBase=(props:any)=> {
             responsive={true}
             customStyles={customStyles}
             {...props}
-        ></DataTable>
+        />
     )
 }
 

@@ -33,8 +33,8 @@ const columns: TableColumn<PromotionDataRow>[] = [
         cell: (row) => (
             <img
                 src={row.avatar.formats.thumbnail.url}
-                width={row.avatar.formats.thumbnail.width}
-                height={row.avatar.formats.thumbnail.height}
+                width={50}
+                height={50}
             />
         ),
         reorder: true,
@@ -68,33 +68,39 @@ const columns: TableColumn<PromotionDataRow>[] = [
 ];
 
 const PromotionsPage: React.FC = Layout(() => {
-    const [promotions, setPromotions] = useState(null);
-    const [loading, setLoading] = useState<boolean>(true);
+    const [promotions, setPromotions] = useState<null|any[]>(null);
+
+    useEffect(() => {
+        _fetchPromotions();
+    }, []);
+
     const _fetchPromotions = async () => {
         try {
-            const { promotions, count } =
-                await insiteApi.PromotionService.getPromotions();
+            const { promotions, count } = await insiteApi.PromotionService.getPromotions();
             console.log("dc ma");
             setPromotions(promotions);
-            setLoading(false);
         } catch (error) {
             console.log(error);
         }
     };
-    useEffect(() => {
-        _fetchPromotions();
-    }, []);
+
+    const _onRowClicked = (row:any, event:React.MouseEvent) => {
+        console.log("row...", row)
+        alert("Click item "+row.id)
+    }
+
     return (
         <div>
-            {loading ? (
+            { !promotions ? (
                 <div className="flex justify-center items-center">
-                    <Loader status="info"></Loader>
+                    <Loader status="info"/>
                 </div>
             ) : (
                 <DataTableBase
                     title="Promotions List"
                     columns={columns}
                     data={promotions}
+                    onRowClicked={_onRowClicked}
                 />
             )}
         </div>

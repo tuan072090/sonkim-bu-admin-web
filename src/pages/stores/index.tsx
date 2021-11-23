@@ -25,8 +25,8 @@ const columns: TableColumn<StoreDataRow>[] = [
         cell: (row) => (
             <img
                 src={row.avatar.formats.thumbnail.url}
-                width={row.avatar.formats.thumbnail.width}
-                height={row.avatar.formats.thumbnail.height}
+                width={50}
+                height={"auto"}
             />
         ),
         reorder: true,
@@ -42,8 +42,8 @@ const columns: TableColumn<StoreDataRow>[] = [
         cell: (row) => (
             <img
                 src={row.business_unit.logo.formats.thumbnail.url}
-                width={row.business_unit.logo.formats.thumbnail.width}
-                height={row.business_unit.logo.formats.thumbnail.height}
+                width={50}
+                height="auto"
             />
         ),
         reorder: true,
@@ -58,25 +58,26 @@ const columns: TableColumn<StoreDataRow>[] = [
 ];
 
 const StoresPage: React.FC = Layout(() => {
-    const [stores, setStores] = useState(null);
-    const [loading, setLoading] = useState<boolean>(true);
+    const [stores, setStores] = useState<null|any[]>(null);
+
     const _fetchStores = async () => {
         try {
             const { stores, count } = await insiteApi.StoreService.getStores();
             setStores(stores);
-            setLoading(false);
         } catch (error) {
             console.log(error);
         }
     };
+
     useEffect(() => {
         _fetchStores();
     }, []);
+
     return (
         <div>
-            {loading ? (
+            {!stores ? (
                 <div className="flex justify-center items-center">
-                    <Loader status="info"></Loader>
+                    <Loader status="info"/>
                 </div>
             ) : (
                 <DataTableBase

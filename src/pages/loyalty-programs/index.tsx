@@ -13,7 +13,7 @@ const columns: TableColumn<LoyaltyProgramDataRow>[] = [
         ),
         sortable: true,
         reorder: true,
-        width: "100px",
+        // width: "100px",
     },
     {
         name: "Name",
@@ -27,8 +27,8 @@ const columns: TableColumn<LoyaltyProgramDataRow>[] = [
         cell: (row) => (
             <img
                 src={row.avatar.formats.thumbnail.url}
-                width={row.avatar.formats.thumbnail.width}
-                height={row.avatar.formats.thumbnail.height}
+                width={50}
+                height={50}
             />
         ),
         reorder: true,
@@ -39,8 +39,8 @@ const columns: TableColumn<LoyaltyProgramDataRow>[] = [
         cell: (row) => (
             <img
                 src={row.business_unit.logo.formats.thumbnail.url}
-                width={row.business_unit.logo.formats.thumbnail.width}
-                height={row.business_unit.logo.formats.thumbnail.height}
+                width={50}
+                height={50}
             />
         ),
         reorder: true,
@@ -61,8 +61,8 @@ const columns: TableColumn<LoyaltyProgramDataRow>[] = [
         cell: (row) => (
             <img
                 src={row.point_system.icon.formats.thumbnail.url}
-                width={row.point_system.icon.formats.thumbnail.width}
-                height={row.point_system.icon.formats.thumbnail.height}
+                width={50}
+                height={50}
             />
         ),
         reorder: true,
@@ -71,26 +71,27 @@ const columns: TableColumn<LoyaltyProgramDataRow>[] = [
 ];
 
 const LoyaltyProgramsPage: React.FC = Layout(() => {
-    const [loyaltyPrograms, setLoyaltyPrograms] = useState(null);
-    const [loading, setLoading] = useState<boolean>(true);
+    const [loyaltyPrograms, setLoyaltyPrograms] = useState<null|any[]>(null);
+
     const _fetchLoyaltyPrograms = async () => {
         try {
             const { count, loyaltyPrograms } =
                 await InsideApiService.LoyaltyService.getLoyaltyPrograms();
             setLoyaltyPrograms(loyaltyPrograms);
-            setLoading(false);
         } catch (error) {
             console.log(error);
         }
     };
+
     useEffect(() => {
         _fetchLoyaltyPrograms();
     }, []);
+
     return (
         <div>
-            {loading ? (
+            {!loyaltyPrograms ? (
                 <div className="flex justify-center items-center">
-                    <Loader status="info"></Loader>
+                    <Loader status="info"/>
                 </div>
             ) : (
                 <DataTableBase

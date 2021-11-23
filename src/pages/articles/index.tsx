@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import DataTable, { TableColumn } from "react-data-table-component";
-import { Link } from "react-router-dom";
-import { DataTableBase, Layout } from "../../components";
+import React, {useEffect, useState} from "react";
+import {TableColumn} from "react-data-table-component";
+import {DataTableBase, Layout} from "../../components";
 import Loader from "../../components/atoms/loader";
-import { Routers } from "../../share";
-import { ThumbnailType } from "../../share/data-types/image";
+import {Routers} from "../../share";
+import {ThumbnailType} from "../../share/data-types/image";
 import InsideApi from "../../share/services/insite-api";
+
 interface DataRow {
     id: number;
     title: string;
@@ -26,53 +26,52 @@ const columns: TableColumn<DataRow>[] = [
         sortable: true,
         reorder: true,
         wrap: true,
-        center:true
+        center: true
     },
     {
         name: "Image",
         cell: (row) => (
             <img
                 src={row.avatar.formats.thumbnail.url}
-                width={row.avatar.formats.thumbnail.width}
-                height={row.avatar.formats.thumbnail.height}
+                width={200}
+                height={"auto"}
             />
         ),
         reorder: true,
-        center:true,
+        center: true,
     },
 ];
 
 
-
 const ArticlesPage: React.FC = Layout(() => {
-    const [articles, setArticles] = useState<any>(null);
-    const [loading, setLoading] = useState(true);
+    const [articles, setArticles] = useState<null|any[]>(null);
+
     const _fetchArticles = async () => {
         try {
-            const { articles, count } =
+            const {articles, count} =
                 await InsideApi.ArticleService.getArticles();
             setArticles(articles);
-            setLoading(false);
         } catch (error) {
             console.log(error);
         }
     };
+
     useEffect(() => {
         _fetchArticles();
     }, []);
 
     return (
         <div>
-            {loading ? (
+            {!articles ? (
                 <div className="flex justify-center items-center">
-                    <Loader status="info"></Loader>
+                    <Loader status="info"/>
                 </div>
             ) : (
                 <DataTableBase
                     title="Articles List"
                     columns={columns}
                     data={articles}
-                ></DataTableBase>
+                />
             )}
         </div>
     );
