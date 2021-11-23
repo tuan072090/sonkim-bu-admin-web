@@ -3,7 +3,8 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "SET ENV=development && SET PORT=3000 && craco start",
+        "dev:window": "SET ENV=development && SET PORT=3000 && craco start",
+        "dev": "ENV=development && PORT=3000 && craco start",
         "build": "craco build",
         "test": "craco test",
         "eject": "react-scripts eject"
