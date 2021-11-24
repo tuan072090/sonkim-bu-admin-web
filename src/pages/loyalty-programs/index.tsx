@@ -72,8 +72,8 @@ const columns: TableColumn<LoyaltyProgramDataRow>[] = [
 ];
 
 const LoyaltyProgramsPage: React.FC = Layout(() => {
-    const [loyaltyPrograms, setLoyaltyPrograms] = useState<null|any[]>(null);
-    const history=useHistory();
+    const [loyaltyPrograms, setLoyaltyPrograms] = useState<null | any[]>(null);
+    const history = useHistory();
 
     const _fetchLoyaltyPrograms = async () => {
         try {
@@ -97,7 +97,7 @@ const LoyaltyProgramsPage: React.FC = Layout(() => {
         <div>
             {!loyaltyPrograms ? (
                 <div className="flex justify-center items-center">
-                    <Loader status="info"/>
+                    <Loader status="info" />
                 </div>
             ) : (
                 <DataTableBase
