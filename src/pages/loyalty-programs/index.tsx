@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { TableColumn } from "react-data-table-component";
+import { useHistory } from "react-router";
 import { DataTableBase, Layout } from "../../components";
 import Loader from "../../components/atoms/loader";
 import { InsideApiService, Routers } from "../../share";
@@ -72,6 +73,7 @@ const columns: TableColumn<LoyaltyProgramDataRow>[] = [
 
 const LoyaltyProgramsPage: React.FC = Layout(() => {
     const [loyaltyPrograms, setLoyaltyPrograms] = useState<null|any[]>(null);
+    const history=useHistory();
 
     const _fetchLoyaltyPrograms = async () => {
         try {
@@ -87,6 +89,10 @@ const LoyaltyProgramsPage: React.FC = Layout(() => {
         _fetchLoyaltyPrograms();
     }, []);
 
+    const _onRowClicked = (row: any, event: React.MouseEvent) => {
+        console.log("row...", row);
+        history.push(`${Routers.LOYALTY_PROGRAMS}/${row.id}`);
+    };
     return (
         <div>
             {!loyaltyPrograms ? (
@@ -98,6 +104,7 @@ const LoyaltyProgramsPage: React.FC = Layout(() => {
                     title="Loyalty Programs List"
                     columns={columns}
                     data={loyaltyPrograms}
+                    onRowClicked={_onRowClicked}
                 />
             )}
         </div>

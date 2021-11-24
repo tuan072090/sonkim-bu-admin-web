@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { TableColumn } from "react-data-table-component";
+import { useHistory } from "react-router";
 import { DataTableBase, Layout } from "../../components";
 import Loader from "../../components/atoms/loader";
 import { Routers } from "../../share";
@@ -59,6 +60,7 @@ const columns: TableColumn<StoreDataRow>[] = [
 
 const StoresPage: React.FC = Layout(() => {
     const [stores, setStores] = useState<null|any[]>(null);
+    const history=useHistory();
 
     const _fetchStores = async () => {
         try {
@@ -73,6 +75,11 @@ const StoresPage: React.FC = Layout(() => {
         _fetchStores();
     }, []);
 
+    const _onRowClicked = (row: any, event: React.MouseEvent) => {
+        console.log("row...", row);
+        history.push(`${Routers.STORES}/${row.id}`);
+    };
+
     return (
         <div>
             {!stores ? (
@@ -84,6 +91,7 @@ const StoresPage: React.FC = Layout(() => {
                     title="Stores list"
                     columns={columns}
                     data={stores}
+                    onRowClicked={_onRowClicked}
                 />
             )}
         </div>

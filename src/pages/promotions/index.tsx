@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { TableColumn } from "react-data-table-component";
+import { useHistory } from "react-router";
 import { DataTableBase, Layout } from "../../components";
 import Loader from "../../components/atoms/loader";
 import { Routers } from "../../share";
@@ -69,6 +70,7 @@ const columns: TableColumn<PromotionDataRow>[] = [
 
 const PromotionsPage: React.FC = Layout(() => {
     const [promotions, setPromotions] = useState<null|any[]>(null);
+    const history=useHistory();
 
     useEffect(() => {
         _fetchPromotions();
@@ -84,10 +86,10 @@ const PromotionsPage: React.FC = Layout(() => {
         }
     };
 
-    const _onRowClicked = (row:any, event:React.MouseEvent) => {
-        console.log("row...", row)
-        alert("Click item "+row.id)
-    }
+    const _onRowClicked = (row: any, event: React.MouseEvent) => {
+        console.log("row...", row);
+        history.push(`${Routers.PROMOTIONS}/${row.id}`);
+    };
 
     return (
         <div>

@@ -38,8 +38,8 @@ const ArticleDetailPage = Layout(() => {
                                 <h4 className="font-bold text-xl mb-4">
                                     Chi tiết Articles
                                 </h4>
-                                <Button size="small" className="w-24 flex flex-row items-center justify-start p-1 mb-4" onClick={_onBackButtonClick}>
-                                    <ChevronLeft ></ChevronLeft>
+                                <Button size="small" className="w-24 flex flex-row items-center justify-evenly" onClick={_onBackButtonClick}>
+                                    <ChevronLeft></ChevronLeft>
                                     <p>Trở về</p>
                                 </Button>
                             </div>
