@@ -1,10 +1,9 @@
-
 export const FormatVND = (pnumber: number) => {
-    let result = "0"
+    let result = "0";
 
     //  check the number has decimal
     if (pnumber % 1 > 0) {
-        result = pnumber.toFixed(2)
+        result = pnumber.toFixed(2);
     }
 
     result = pnumber.toString();
@@ -24,4 +23,13 @@ export const RemoveAscent = (str: string): string => {
     str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
     str = str.replace(/đ/g, "d");
     return str;
-}
+};
+
+export const DateFormat = (date: string): string => {
+    const dayFormat = new Date(date);
+    let day = dayFormat.getDate().toString();
+    let month = dayFormat.getMonth().toString();
+    let year = dayFormat.getFullYear().toString();
+
+    return `${day}/${month}/${year}`;
+};
