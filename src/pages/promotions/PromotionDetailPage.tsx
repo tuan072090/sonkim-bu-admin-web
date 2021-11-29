@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { ChevronLeft } from "react-feather";
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
-import { Box, Button, Layout } from "../../components";
+import { Box, Button, Layout, TextInput } from "../../components";
 import insiteApi from "../../share/services/insite-api";
+import { FormatVND } from "../../share/utils/formater";
 
 const PromotionDetailPage = Layout(() => {
     const params = useParams<{ id: string }>();
@@ -14,7 +15,7 @@ const PromotionDetailPage = Layout(() => {
             const data = await insiteApi.PromotionService.getPromotionDetail(
                 +params.id
             );
-            console.log('promotion:'+data);
+            console.log(data);
             setPromotionDetail(data);
         } catch (error) {
             console.log("error" + error);
@@ -27,10 +28,10 @@ const PromotionDetailPage = Layout(() => {
         history.goBack();
     }
     return (
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-4 grid-rows-2 gap-3">
             {promotionDetail ? (
                 <>
-                    <Box className="col-span-3">
+                    <Box className="col-span-3 row-span-2">
                         <div className="flex flex-col justify-center">
                             
                             <div className="flex flex-row items-center justify-between">
@@ -42,13 +43,119 @@ const PromotionDetailPage = Layout(() => {
                                     <p>Trở về</p>
                                 </Button>
                             </div>
+                            <div className="flex flex-col mb-4">
+                                <label className="font-semibold text-base mb-1">
+                                    Tiêu đề:
+                                </label>
+                                <TextInput
+                                    size="small"
+                                    value={promotionDetail.title}
+                                    type="text"
+                                    disabled
+                                    className="w-full"
+                                ></TextInput>
+                            </div>
+                            <div className="flex flex-col mb-4">
+                                <label className="font-semibold text-base mb-1">
+                                    Hình ảnh:
+                                </label>
+                                <img
+                                    src={
+                                        promotionDetail.avatar.formats
+                                            .thumbnail.url
+                                    }
+                                    height={
+                                        promotionDetail.avatar.formats
+                                            .thumbnail.height
+                                    }
+                                    width={
+                                        promotionDetail.avatar.formats
+                                            .thumbnail.width
+                                    }
+                                />
+                            </div>
+                            <div className="flex flex-col mb-4">
+                                <label className="font-semibold text-base mb-1">
+                                    Mô tả:
+                                </label>
+                                <TextInput
+                                    size="small"
+                                    value={promotionDetail.description}
+                                    type="text"
+                                    disabled
+                                    className="w-full"
+                                ></TextInput>
+                            </div>
+
+                            <div className="flex flex-col mb-4">
+                                <label className="font-semibold text-base mb-1">
+                                    Cash:
+                                </label>
+                                <TextInput
+                                    size="small"
+                                    value={`${FormatVND(promotionDetail.cash)} VNĐ`}
+                                    type="text"
+                                    disabled
+                                    className="w-full"
+                                ></TextInput>
+                            </div>
+                            
+
+                            <div className="flex flex-col mb-4">
+                                <label className="font-semibold text-base mb-1">
+                                    Price:
+                                </label>
+                                <TextInput
+                                    size="small"
+                                    value={promotionDetail.price?FormatVND(promotionDetail.price):'-'}
+                                    type="text"
+                                    disabled
+                                    className="w-full"
+                                ></TextInput>
+                            </div>
                             
                         </div>
                     </Box>
+                    {/* Loyalty_Program zone */}
                     <Box>
-                        <h4 className="font-bold text-xl mb-4">
-                            Thông tin BU
-                        </h4>
+                    <div className="flex flex-col justify-center">
+                            <h5 className="font-semibold text-lg mb-4">
+                                Thông tin Loyalty
+                            </h5>
+                            <div className="flex flex-col mb-4">
+                                <label className="font-semibold text-base mb-1">
+                                    Tên:
+                                </label>
+                                <TextInput
+                                    size="small"
+                                    value={
+                                        promotionDetail.loyalty_program.name
+                                    }
+                                    type="text"
+                                    disabled
+                                    className="w-full"
+                                ></TextInput>
+                            </div>
+                            <div className="flex flex-col mb-4">
+                                <label className="font-semibold text-base mb-1">
+                                    Avatar:
+                                </label>
+                                <img
+                                    src={
+                                        promotionDetail.loyalty_program.avatar
+                                            .formats.thumbnail.url
+                                    }
+                                    height={
+                                        promotionDetail.loyalty_program.avatar
+                                            .formats.thumbnail.height
+                                    }
+                                    width={
+                                        promotionDetail.loyalty_program.avatar
+                                            .formats.thumbnail.width
+                                    }
+                                />
+                            </div>
+                        </div>
                     </Box>
                 </>
             ) : null}
