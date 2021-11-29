@@ -9,7 +9,7 @@ import { FormatVND } from "../../share/utils/formater";
 const PromotionDetailPage = Layout(() => {
     const params = useParams<{ id: string }>();
     const [promotionDetail, setPromotionDetail] = useState<any>(null);
-    const history=useHistory();
+    const history = useHistory();
     const _fetchPromotionDetail = async () => {
         try {
             const data = await insiteApi.PromotionService.getPromotionDetail(
@@ -24,21 +24,24 @@ const PromotionDetailPage = Layout(() => {
     useEffect(() => {
         _fetchPromotionDetail();
     }, [params.id]);
-    const _onBackButtonClick=()=>{
+    const _onBackButtonClick = () => {
         history.goBack();
-    }
+    };
     return (
         <div className="grid grid-cols-4 grid-rows-2 gap-3">
             {promotionDetail ? (
                 <>
                     <Box className="col-span-3 row-span-2">
                         <div className="flex flex-col justify-center">
-                            
                             <div className="flex flex-row items-center justify-between">
                                 <h4 className="font-bold text-xl mb-4">
                                     Chi tiết Promotion
                                 </h4>
-                                <Button size="small" className="w-24 flex flex-row items-center justify-evenly" onClick={_onBackButtonClick}>
+                                <Button
+                                    size="small"
+                                    className="w-24 flex flex-row items-center justify-evenly"
+                                    onClick={_onBackButtonClick}
+                                >
                                     <ChevronLeft></ChevronLeft>
                                     <p>Trở về</p>
                                 </Button>
@@ -61,16 +64,16 @@ const PromotionDetailPage = Layout(() => {
                                 </label>
                                 <img
                                     src={
-                                        promotionDetail.avatar.formats
-                                            .thumbnail.url
+                                        promotionDetail.avatar.formats.thumbnail
+                                            .url
                                     }
                                     height={
-                                        promotionDetail.avatar.formats
-                                            .thumbnail.height
+                                        promotionDetail.avatar.formats.thumbnail
+                                            .height
                                     }
                                     width={
-                                        promotionDetail.avatar.formats
-                                            .thumbnail.width
+                                        promotionDetail.avatar.formats.thumbnail
+                                            .width
                                     }
                                 />
                             </div>
@@ -93,13 +96,14 @@ const PromotionDetailPage = Layout(() => {
                                 </label>
                                 <TextInput
                                     size="small"
-                                    value={`${FormatVND(promotionDetail.cash)} VNĐ`}
+                                    value={`${FormatVND(
+                                        promotionDetail.cash
+                                    )} VNĐ`}
                                     type="text"
                                     disabled
                                     className="w-full"
                                 ></TextInput>
                             </div>
-                            
 
                             <div className="flex flex-col mb-4">
                                 <label className="font-semibold text-base mb-1">
@@ -107,18 +111,21 @@ const PromotionDetailPage = Layout(() => {
                                 </label>
                                 <TextInput
                                     size="small"
-                                    value={promotionDetail.price?FormatVND(promotionDetail.price):'-'}
+                                    value={
+                                        promotionDetail.price
+                                            ? FormatVND(promotionDetail.price)
+                                            : "-"
+                                    }
                                     type="text"
                                     disabled
                                     className="w-full"
                                 ></TextInput>
                             </div>
-                            
                         </div>
                     </Box>
                     {/* Loyalty_Program zone */}
                     <Box>
-                    <div className="flex flex-col justify-center">
+                        <div className="flex flex-col justify-center">
                             <h5 className="font-semibold text-lg mb-4">
                                 Thông tin Loyalty
                             </h5>
@@ -128,9 +135,7 @@ const PromotionDetailPage = Layout(() => {
                                 </label>
                                 <TextInput
                                     size="small"
-                                    value={
-                                        promotionDetail.loyalty_program.name
-                                    }
+                                    value={promotionDetail.loyalty_program.name}
                                     type="text"
                                     disabled
                                     className="w-full"
