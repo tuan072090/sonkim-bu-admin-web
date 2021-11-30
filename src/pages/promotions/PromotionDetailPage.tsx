@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 import { Box, Button, Layout, TextInput } from "../../components";
 import insiteApi from "../../share/services/insite-api";
 import { FormatVND } from "../../share/utils/formater";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const PromotionDetailPage = Layout(() => {
     const params = useParams<{ id: string }>();
@@ -81,13 +83,27 @@ const PromotionDetailPage = Layout(() => {
                                 <label className="font-semibold text-base mb-1">
                                     Mô tả:
                                 </label>
-                                <TextInput
-                                    size="small"
-                                    value={promotionDetail.description}
-                                    type="text"
-                                    disabled
-                                    className="w-full"
-                                ></TextInput>
+                                <CKEditor
+                                    editor={ClassicEditor}
+                                    data={promotionDetail.description}
+                                    onReady={(editor) => {
+                                        // You can store the "editor" and use when it is needed.
+                                        console.log(
+                                            "Editor is ready to use!",
+                                            editor
+                                        );
+                                    }}
+                                    onChange={(event, editor) => {
+                                        const data = editor.getData();
+                                        console.log({ event, editor, data });
+                                    }}
+                                    onBlur={(event, editor) => {
+                                        console.log("Blur.", editor);
+                                    }}
+                                    onFocus={(event, editor) => {
+                                        console.log("Focus.", editor);
+                                    }}
+                                />
                             </div>
 
                             <div className="flex flex-col mb-4">

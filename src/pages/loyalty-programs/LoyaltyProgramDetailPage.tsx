@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 import { Box, Button, Layout, SwitchButton, TextInput } from "../../components";
 import insiteApi from "../../share/services/insite-api";
 import { DateFormat } from "../../share/utils/formater";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const LoyaltyProgramDetailPage = Layout(() => {
     const params = useParams<{ id: string }>();
@@ -89,12 +91,27 @@ const LoyaltyProgramDetailPage = Layout(() => {
                                 <label className="font-semibold text-base mb-1">
                                     Nội dung:
                                 </label>
-                                <textarea
-                                    cols={50}
-                                    rows={10}
-                                    value={loyaltyProgramDetail.body}
-                                    className="border-2 w-full rounded-lg border-solid p-2"
-                                ></textarea>
+                                <CKEditor
+                                    editor={ClassicEditor}
+                                    data={loyaltyProgramDetail.body}
+                                    onReady={(editor) => {
+                                        // You can store the "editor" and use when it is needed.
+                                        console.log(
+                                            "Editor is ready to use!",
+                                            editor
+                                        );
+                                    }}
+                                    onChange={(event, editor) => {
+                                        const data = editor.getData();
+                                        console.log({ event, editor, data });
+                                    }}
+                                    onBlur={(event, editor) => {
+                                        console.log("Blur.", editor);
+                                    }}
+                                    onFocus={(event, editor) => {
+                                        console.log("Focus.", editor);
+                                    }}
+                                />
                             </div>
                             <div className="flex flex-col mb-4">
                                 <label className="font-semibold text-base mb-1">
