@@ -46,11 +46,6 @@ class FetchData {
         const errors = error.response?.data?.error?.errors || []
 
         if (status === 401 || status === 403) {
-            //  logout
-            // this.SetAccessToken("")
-            // LocalStorageService.SetAccessToken("");
-            // LocalStorageService.SetRefreshToken("");
-            // LocalStorageService.SetUser(null)
             // @ts-ignore
             store.dispatch(LOGOUT);
         }
