@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { TableColumn } from "react-data-table-component";
 import { useHistory } from "react-router";
-import { DataTableBase, Layout } from "../../components";
+import { Box, DataTableBase, Layout } from "../../components";
 import Loader from "../../components/atoms/loader";
 import { InsideApiService, Routers } from "../../share";
 import { LoyaltyProgramDataRow } from "../../share/data-types/loyalty-program";
@@ -14,7 +14,6 @@ const columns: TableColumn<LoyaltyProgramDataRow>[] = [
         ),
         sortable: true,
         reorder: true,
-        // width: "100px",
     },
     {
         name: "Name",
@@ -100,12 +99,14 @@ const LoyaltyProgramsPage: React.FC = Layout(() => {
                     <Loader status="info" />
                 </div>
             ) : (
-                <DataTableBase
-                    title="Loyalty Programs List"
-                    columns={columns}
-                    data={loyaltyPrograms}
-                    onRowClicked={_onRowClicked}
-                />
+                <Box>
+                    <DataTableBase
+                        title="Loyalty Programs List"
+                        columns={columns}
+                        data={loyaltyPrograms}
+                        onRowClicked={_onRowClicked}
+                    />
+                </Box>
             )}
         </div>
     );

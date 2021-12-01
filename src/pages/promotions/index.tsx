@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { TableColumn } from "react-data-table-component";
 import { useHistory } from "react-router";
-import { DataTableBase, Layout } from "../../components";
+import { Box, DataTableBase, Layout } from "../../components";
 import Loader from "../../components/atoms/loader";
 import { Routers } from "../../share";
 import { PromotionDataRow } from "../../share/data-types/promotion";
@@ -69,8 +69,8 @@ const columns: TableColumn<PromotionDataRow>[] = [
 ];
 
 const PromotionsPage: React.FC = Layout(() => {
-    const [promotions, setPromotions] = useState<null|any[]>(null);
-    const history=useHistory();
+    const [promotions, setPromotions] = useState<null | any[]>(null);
+    const history = useHistory();
 
     useEffect(() => {
         _fetchPromotions();
@@ -78,7 +78,8 @@ const PromotionsPage: React.FC = Layout(() => {
 
     const _fetchPromotions = async () => {
         try {
-            const { promotions, count } = await insiteApi.PromotionService.getPromotions();
+            const { promotions, count } =
+                await insiteApi.PromotionService.getPromotions();
             console.log("dc ma");
             setPromotions(promotions);
         } catch (error) {
@@ -93,17 +94,19 @@ const PromotionsPage: React.FC = Layout(() => {
 
     return (
         <div>
-            { !promotions ? (
+            {!promotions ? (
                 <div className="flex justify-center items-center">
-                    <Loader status="info"/>
+                    <Loader status="info" />
                 </div>
             ) : (
-                <DataTableBase
-                    title="Promotions List"
-                    columns={columns}
-                    data={promotions}
-                    onRowClicked={_onRowClicked}
-                />
+                <Box>
+                    <DataTableBase
+                        title="Promotions List"
+                        columns={columns}
+                        data={promotions}
+                        onRowClicked={_onRowClicked}
+                    />
+                </Box>
             )}
         </div>
     );

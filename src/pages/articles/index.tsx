@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { TableColumn } from "react-data-table-component";
 import { useHistory } from "react-router";
-import { DataTableBase, Layout } from "../../components";
+import { Box, DataTableBase, Layout } from "../../components";
 import Loader from "../../components/atoms/loader";
 import { Routers } from "../../share";
 import { ThumbnailType } from "../../share/data-types/image";
@@ -73,12 +73,14 @@ const ArticlesPage: React.FC = Layout(() => {
                     <Loader status="info" />
                 </div>
             ) : (
-                <DataTableBase
-                    title="Articles List"
-                    columns={columns}
-                    data={articles}
-                    onRowClicked={_onRowClicked}
-                />
+                <Box>
+                    <DataTableBase
+                        title="Articles List"
+                        columns={columns}
+                        data={articles}
+                        onRowClicked={_onRowClicked}
+                    />
+                </Box>
             )}
         </div>
     );
