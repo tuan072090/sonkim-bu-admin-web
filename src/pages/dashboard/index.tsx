@@ -1,167 +1,96 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
-    Alert,
+    AreaChartCpn,
+    BarChartCpn,
     Box,
-    Button,
-    Select,
-    TextInput,
-    SwitchButton,
-    Card,
     Layout,
+    LineChartCpn,
+    PieChartCpn,
 } from "../../components";
-import Modal from "../../components/organisms/modal";
-import { useSelector } from "react-redux";
 
-const DashBoardPage = Layout(
-    () => {
-        //@ts-ignore
-        const {accessToken}=useSelector(state=>state.auth);
-        //@ts-ignore
-        const {version}=useSelector(state=>state.version)
-        const [toggleVal, setToggleVal] = useState(false);
+const data = [
+    {
+        name: "Page A",
+        uv: 4000,
+        pv: 2400,
+        amt: 2400,
+    },
+    {
+        name: "Page B",
+        uv: 3000,
+        pv: 1398,
+        amt: 2210,
+    },
+    {
+        name: "Page C",
+        uv: 2000,
+        pv: 9800,
+        amt: 2290,
+    },
+    {
+        name: "Page D",
+        uv: 2780,
+        pv: 3908,
+        amt: 2000,
+    },
+    {
+        name: "Page E",
+        uv: 1890,
+        pv: 4800,
+        amt: 2181,
+    },
+    {
+        name: "Page F",
+        uv: 2390,
+        pv: 3800,
+        amt: 2500,
+    },
+    {
+        name: "Page G",
+        uv: 3490,
+        pv: 4300,
+        amt: 2100,
+    },
+];
 
-        const [showModal, setShowModal] = useState(false);
+const dataPieChart = [
+    { name: "Group A", value: 400 },
+    { name: "Group B", value: 300 },
+    { name: "Group C", value: 300 },
+    { name: "Group D", value: 200 },
+];
 
+const DashboardPage = Layout(() => {
+    return (
+        <div className="p-3">
+            <div className="grid grid-flow-col grid-col-2 grid-rows-2 gap-4">
+                <Box>
+                    <h3 className="mb-3 text-base text-black font-bold">
+                        Line chart
+                    </h3>
+                    <LineChartCpn data={data} />
+                </Box>
+                <Box>
+                    <h3 className="mb-3 text-base text-black font-bold">
+                        Bar chart
+                    </h3>
+                    <BarChartCpn data={data} />
+                </Box>
+                <Box>
+                    <h3 className="mb-3 text-base text-black font-bold">
+                        Pie chart
+                    </h3>
+                    <PieChartCpn data={dataPieChart} />
+                </Box>
+                <Box>
+                    <h3 className="mb-3 text-base text-black font-bold">
+                        Area chart
+                    </h3>
+                    <AreaChartCpn data={data} />
+                </Box>
+            </div>
+        </div>
+    );
+});
 
-
-        return (
-            <>
-                <div className="p-3">
-                    <div className="grid grid-flow-col gird-col-3 gap-4">
-                        <Box>
-                            <h3 className="mb-3">Buttons</h3>
-
-                            <div className="flex items-center justify-between">
-                                <Button color="primary" size="small">
-                                    Button small
-                                </Button>
-                                <Button color="green">Button default</Button>
-                                <Button color="red" size="large">
-                                    Button large
-                                </Button>
-                            </div>
-                        </Box>
-
-                        <Box>
-                            <h3 className="mb-3">Form control</h3>
-                            <TextInput placeholder="Text input" className="w-full" />
-
-                            <Select
-                                className="mt-3 w-full"
-                                value={3}
-                                data={[
-                                    { value: 1, label: "option 1" },
-                                    { value: 2, label: "option 2" },
-                                    { value: 3, label: "option 3" },
-                                    { value: 4, label: "option 4" },
-                                ]}
-                            />
-
-                            <div className="mt-3 flex flex-col">
-                                <SwitchButton
-                                    onChange={(val) => setToggleVal(val)}
-                                    value={toggleVal}
-                                    label="Button small"
-                                    size="small"
-                                />
-                                <SwitchButton
-                                    className="mt-3"
-                                    onChange={(val) => setToggleVal(val)}
-                                    value={toggleVal}
-                                    label="Button default"
-                                />
-                                <SwitchButton
-                                    className="mt-3"
-                                    onChange={(val) => setToggleVal(val)}
-                                    value={toggleVal}
-                                    label="Button large"
-                                    size="large"
-                                />
-                            </div>
-                        </Box>
-
-                        <Box>
-                            <h3 className="mb-3">Alert</h3>
-
-                            <Alert color="primary" message="Simple primary alert message" />
-                            <br />
-                            <Alert color="green" message="Simple blue alert message" />
-                            <br />
-                            <Alert color="red" message="Simple red alert message" />
-                            <br />
-                            <Alert color="yellow" message="Simple yellow alert message" />
-                            <br />
-                            <Alert color="green" message="Simple green alert message" />
-                        </Box>
-
-                        <Box>
-                            <h3 className="mb-3">Modal</h3>
-
-                            <Button
-                                onClick={() => {
-                                    setShowModal(!showModal);
-                                }}
-                            >
-                                Open modal
-                            </Button>
-
-                            <Modal
-                                show={showModal}
-                                onChange={(showChange) => setShowModal(showChange)}
-                                title="Modal title here"
-                            >
-                                <p>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                    Asperiores, quis tempora! Similique, explicabo quaerat maxime
-                                    corrupti tenetur blanditiis voluptas molestias totam? Quaerat
-                                    laboriosam suscipit repellat aliquam blanditiis eum quos
-                                    nihil.
-                                </p>
-                            </Modal>
-                        </Box>
-                    </div>
-
-                    <Box className="mt-3 bg-gray-100">
-                        <h2 className="text-2xl mb-4 font-semibold leading-tight">Card</h2>
-
-                        <div className="grid grid-flow-col gird-col-3 gap-4">
-                            <Card>
-                                <Card.Image src="https://images.unsplash.com/photo-1632582593957-e28f748ba619?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80" />
-                                <Card.Title>Iphone 13 xách tay Singapore</Card.Title>
-                                <Card.Body>
-                                    Our most advanced dual‑camera system ever.A lightning-fast
-                                    chip that leaves the competition behind.
-                                </Card.Body>
-                            </Card>
-                            <Card>
-                                <Card.Image src="https://images.unsplash.com/photo-1632582593957-e28f748ba619?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80" />
-                                <Card.Title>Iphone 13 xách tay Singapore</Card.Title>
-                                <Card.Body>
-                                    Our most advanced dual‑camera system ever.A lightning-fast
-                                    chip that leaves the competition behind.
-                                </Card.Body>
-                            </Card>
-                            <Card>
-                                <Card.Image src="https://images.unsplash.com/photo-1632582593957-e28f748ba619?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80" />
-                                <Card.Title>Iphone 13 xách tay Singapore</Card.Title>
-                                <Card.Body>
-                                    Our most advanced dual‑camera system ever.A lightning-fast
-                                    chip that leaves the competition behind.
-                                </Card.Body>
-                            </Card>
-                            <Card>
-                                <Card.Image src="https://images.unsplash.com/photo-1632582593957-e28f748ba619?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80" />
-                                <Card.Title>Iphone 13 xách tay Singapore</Card.Title>
-                                <Card.Body>
-                                    Our most advanced dual‑camera system ever.A lightning-fast
-                                    chip that leaves the competition behind.
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    </Box>
-                </div>
-            </>
-        );
-    })
-    ;
-export default DashBoardPage;
+export default DashboardPage;

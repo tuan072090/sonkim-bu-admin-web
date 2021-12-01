@@ -21,7 +21,10 @@ import PageHeader from "./organisms/page-header";
 import Sidebar from "./organisms/sidebar";
 import Wizard from "./organisms/wizard"
 import DataTableBase from './organisms/data-table';
-
+import LineChartCpn from './organisms/charts/LineChart';
+import BarChartCpn from './organisms/charts/BarChart';
+import PieChartCpn from './organisms/charts/PieChart';
+import AreaChartCpn from './organisms/charts/AreaChart';
 //  templates
 import Layout from "./templates/layout";
 
@@ -47,6 +50,10 @@ export {
     Sidebar,
     Wizard,
     DataTableBase,
+    LineChartCpn,
+    BarChartCpn,
+    PieChartCpn,
+    AreaChartCpn,
     //  templates
     Layout,
 }
