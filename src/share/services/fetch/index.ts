@@ -2,6 +2,8 @@ import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 import MyError from "../error";
 import LocalStorageService from "../local-storage";
 import {CONFIGS} from "../../configs";
+import { store } from '../../store';
+import { LOGOUT } from '../../reducers/auth/auth.reducer';
 
 const apiUri = CONFIGS.REACT_APP_API_URI
 
@@ -45,10 +47,12 @@ class FetchData {
 
         if (status === 401 || status === 403) {
             //  logout
-            this.SetAccessToken("")
-            LocalStorageService.SetAccessToken("");
-            LocalStorageService.SetRefreshToken("");
-            LocalStorageService.SetUser(null)
+            // this.SetAccessToken("")
+            // LocalStorageService.SetAccessToken("");
+            // LocalStorageService.SetRefreshToken("");
+            // LocalStorageService.SetUser(null)
+            // @ts-ignore
+            store.dispatch(LOGOUT);
         }
 
         throw new MyError(status, message, code, errors)
