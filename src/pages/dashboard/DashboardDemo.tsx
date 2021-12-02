@@ -1,27 +1,17 @@
-import React, { useState, useEffect } from "react";
-import {
-    Alert,
-    Box,
-    Button,
-    Select,
-    TextInput,
-    SwitchButton,
-    Card,
-    Layout,
-} from "../../components";
+import React, {useState} from "react";
+import {Alert, Box, Button, Card, Layout, Select, SwitchButton, TextInput,} from "../../components";
 import Modal from "../../components/organisms/modal";
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 
 const DashBoardPageDemo = Layout(
     () => {
         //@ts-ignore
-        const {accessToken}=useSelector(state=>state.auth);
+        const {accessToken} = useSelector(state => state.auth);
         //@ts-ignore
-        const {version}=useSelector(state=>state.version)
+        const {version} = useSelector(state => state.version)
         const [toggleVal, setToggleVal] = useState(false);
 
         const [showModal, setShowModal] = useState(false);
-
 
 
         return (
@@ -44,16 +34,16 @@ const DashBoardPageDemo = Layout(
 
                         <Box>
                             <h3 className="mb-3">Form control</h3>
-                            <TextInput placeholder="Text input" className="w-full" />
+                            <TextInput placeholder="Text input" className="w-full"/>
 
                             <Select
                                 className="mt-3 w-full"
                                 value={3}
                                 data={[
-                                    { value: 1, label: "option 1" },
-                                    { value: 2, label: "option 2" },
-                                    { value: 3, label: "option 3" },
-                                    { value: 4, label: "option 4" },
+                                    {value: 1, label: "option 1"},
+                                    {value: 2, label: "option 2"},
+                                    {value: 3, label: "option 3"},
+                                    {value: 4, label: "option 4"},
                                 ]}
                             />
 
@@ -83,15 +73,15 @@ const DashBoardPageDemo = Layout(
                         <Box>
                             <h3 className="mb-3">Alert</h3>
 
-                            <Alert color="primary" message="Simple primary alert message" />
-                            <br />
-                            <Alert color="green" message="Simple blue alert message" />
-                            <br />
-                            <Alert color="red" message="Simple red alert message" />
-                            <br />
-                            <Alert color="yellow" message="Simple yellow alert message" />
-                            <br />
-                            <Alert color="green" message="Simple green alert message" />
+                            <Alert color="primary" message="Simple primary alert message"/>
+                            <br/>
+                            <Alert color="green" message="Simple blue alert message"/>
+                            <br/>
+                            <Alert color="red" message="Simple red alert message"/>
+                            <br/>
+                            <Alert color="yellow" message="Simple yellow alert message"/>
+                            <br/>
+                            <Alert color="green" message="Simple green alert message"/>
                         </Box>
 
                         <Box>
@@ -126,7 +116,8 @@ const DashBoardPageDemo = Layout(
 
                         <div className="grid grid-flow-col gird-col-3 gap-4">
                             <Card>
-                                <Card.Image src="https://images.unsplash.com/photo-1632582593957-e28f748ba619?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80" />
+                                <Card.Image
+                                    src="https://images.unsplash.com/photo-1632582593957-e28f748ba619?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"/>
                                 <Card.Title>Iphone 13 xách tay Singapore</Card.Title>
                                 <Card.Body>
                                     Our most advanced dual‑camera system ever.A lightning-fast
@@ -134,7 +125,8 @@ const DashBoardPageDemo = Layout(
                                 </Card.Body>
                             </Card>
                             <Card>
-                                <Card.Image src="https://images.unsplash.com/photo-1632582593957-e28f748ba619?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80" />
+                                <Card.Image
+                                    src="https://images.unsplash.com/photo-1632582593957-e28f748ba619?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"/>
                                 <Card.Title>Iphone 13 xách tay Singapore</Card.Title>
                                 <Card.Body>
                                     Our most advanced dual‑camera system ever.A lightning-fast
@@ -142,7 +134,8 @@ const DashBoardPageDemo = Layout(
                                 </Card.Body>
                             </Card>
                             <Card>
-                                <Card.Image src="https://images.unsplash.com/photo-1632582593957-e28f748ba619?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80" />
+                                <Card.Image
+                                    src="https://images.unsplash.com/photo-1632582593957-e28f748ba619?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"/>
                                 <Card.Title>Iphone 13 xách tay Singapore</Card.Title>
                                 <Card.Body>
                                     Our most advanced dual‑camera system ever.A lightning-fast
@@ -150,7 +143,8 @@ const DashBoardPageDemo = Layout(
                                 </Card.Body>
                             </Card>
                             <Card>
-                                <Card.Image src="https://images.unsplash.com/photo-1632582593957-e28f748ba619?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80" />
+                                <Card.Image
+                                    src="https://images.unsplash.com/photo-1632582593957-e28f748ba619?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"/>
                                 <Card.Title>Iphone 13 xách tay Singapore</Card.Title>
                                 <Card.Body>
                                     Our most advanced dual‑camera system ever.A lightning-fast
@@ -163,5 +157,5 @@ const DashBoardPageDemo = Layout(
             </>
         );
     })
-    ;
+;
 export default DashBoardPageDemo;

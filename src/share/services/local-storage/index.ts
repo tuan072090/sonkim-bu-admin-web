@@ -41,7 +41,7 @@ class LocalStorage {
         return this.accessToken
     }
 
-    public GetAccessToken = (): string => {
+    public GetAccessToken = (): string|null => {
         return this.accessToken
     }
 

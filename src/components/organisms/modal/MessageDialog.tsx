@@ -1,13 +1,12 @@
-import React, {  useEffect, useRef } from "react";
+import React, {useEffect, useRef} from "react";
 import styles from './modal.module.scss';
 import Button from "../../atoms/button";
-import { useDispatch, useSelector } from "react-redux";
-import { UPDATE_MESSAGE } from "../../../share/reducers/modal-msg/modalMsg.reducer";
+import {UpdateMessage} from "../../../share/reducers/modal-msg";
+import {useAppSelector, useAppDispatch} from '../../../share/store'
 
 const MessageDialog = () => {
-    //@ts-ignore
-    const {message}=useSelector(state=>state.modalMsg);
-    const dispatch=useDispatch();
+    const {message} = useAppSelector(state => state.modalMsg);
+    const dispatch = useAppDispatch();
 
     const dialogRef = useRef(null)
 
@@ -23,10 +22,7 @@ const MessageDialog = () => {
     }, [dialogRef, message])
 
     const _close = () => {
-        dispatch({
-            type: UPDATE_MESSAGE,
-            payload: null
-        })
+        dispatch(UpdateMessage(null))
     }
 
     const isShow = !!message;

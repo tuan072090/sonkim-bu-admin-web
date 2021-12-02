@@ -1,12 +1,10 @@
-import { combineReducers } from "redux";
-import authReducer from "./auth/auth.reducer";
-import modalMsgReducer from "./modal-msg/modalMsg.reducer";
-import versionReducer from "./version/version.reducer";
+import authReducer from "./auth";
+import modalMsgReducer from "./modal-msg";
+import { combineReducers } from 'redux'
 
-const rootReducer=combineReducers({
+const rootReducer = combineReducers({
     modalMsg: modalMsgReducer,
-    auth:authReducer,
-    version:versionReducer
+    auth: authReducer
 })
 
 export default rootReducer;

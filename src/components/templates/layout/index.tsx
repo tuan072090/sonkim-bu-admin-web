@@ -5,12 +5,11 @@ import Sidebar from "../../organisms/sidebar";
 import LoginForm from "../../organisms/login-form";
 import ErrorDialog from "../../organisms/modal/ErrorDialog";
 import MessageDialog from "../../organisms/modal/MessageDialog";
-import { useSelector } from "react-redux";
+import {useAppSelector} from "../../../share/store";
 
 const Layout = (Component: React.ComponentType<any>) => function Comp(props: React.PropsWithChildren<any>) {
-    //@ts-ignore
-    const {user} = useSelector(state=>state.auth)
-    console.log('user ne',user);
+    const {user} = useAppSelector(state => state.auth)
+
     if (!user) {
         return (
             <div className="p-5 w-full flex justify-center items-center">

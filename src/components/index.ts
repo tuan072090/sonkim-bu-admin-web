@@ -27,6 +27,7 @@ import PieChartCpn from './organisms/charts/PieChart';
 import AreaChartCpn from './organisms/charts/AreaChart';
 //  templates
 import Layout from "./templates/layout";
+import ErrorFallback from './organisms/error-fallback';
 
 
 export {
@@ -54,6 +55,7 @@ export {
     BarChartCpn,
     PieChartCpn,
     AreaChartCpn,
+    ErrorFallback,
     //  templates
     Layout,
 }

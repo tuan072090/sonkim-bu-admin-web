@@ -1,18 +1,17 @@
-import React, {useState } from "react";
+import React, {useState} from "react";
 import {Box, Button, TextInput} from "../../index";
-import { InsideApiService } from "../../../share";
+import {InsideApiService} from "../../../share";
 import Image from '../../atoms/image'
 import LogoUri from '../../../static/logo.png'
 import MyError from "../../../share/services/error";
-import { useDispatch } from "react-redux";
-import { UPDATE_ACCESS_TOKEN, UPDATE_USER } from "../../../share/reducers/auth/auth.reducer";
-import { UPDATE_ERROR, UPDATE_MESSAGE } from "../../../share/reducers/modal-msg/modalMsg.reducer";
-import { useHistory } from "react-router";
+import {useDispatch} from "react-redux";
+import {useHistory} from "react-router";
+import {UpdateAccessToken, UpdateUser} from '../../../share/reducers/auth';
+import {UpdateMessage} from '../../../share/reducers/modal-msg'
 
 const LoginForm = () => {
     const dispatch = useDispatch();
-    const history=useHistory();
-
+    const history = useHistory();
     const [username, setUsername] = useState("");
     const [pass, setPass] = useState('');
 
@@ -23,31 +22,13 @@ const LoginForm = () => {
 
     const _submitHandler = async () => {
         try {
-            const { jwt, user} = await InsideApiService.AuthService.login(username, pass)
+            const {jwt, user} = await InsideApiService.AuthService.login(username, pass)
 
-            console.log("jwt", jwt)
-            console.log("user", user)
-
-            dispatch({
-                type: UPDATE_ACCESS_TOKEN,
-                payload: jwt
-            })
-
-            dispatch({
-                type: UPDATE_USER,
-                payload: user
-            })
-            dispatch({
-                type: UPDATE_MESSAGE,
-                payload: { status: "success", title: "Đăng nhập thành công" }
-            })
-            history.push('/');
-
+            dispatch(UpdateAccessToken(jwt))
+            dispatch(UpdateUser(user))
+            dispatch(UpdateMessage({status: "success", title: "Đăng nhập thành công"}))
         } catch (err) {
-            dispatch({
-                type: UPDATE_ERROR,
-                payload: new MyError(400, "Sai thông tin đăng nhập")
-            })
+            dispatch(UpdateMessage(new MyError(400, "Sai thông tin đăng nhập")))
         }
     }
 
@@ -64,7 +45,7 @@ const LoginForm = () => {
                     <div className="text-sm font-bold text-gray-700 tracking-wide mb-2">
                         Username / Email
                     </div>
-                    <TextInput onChange={_onUsernameChange} placeholder="username/email" className="w-full" />
+                    <TextInput onChange={_onUsernameChange} placeholder="username/email" className="w-full"/>
                 </div>
                 <div className="mt-8">
                     <div className="flex justify-between items-center">
@@ -72,7 +53,8 @@ const LoginForm = () => {
                             Mật khẩu
                         </div>
                     </div>
-                    <TextInput type="password" onChange={(e) => setPass(e.target.value)} placeholder="Password" className="w-full" />
+                    <TextInput type="password" onChange={(e) => setPass(e.target.value)} placeholder="Password"
+                               className="w-full"/>
                 </div>
                 <div className="my-10">
                     <Button color="green" className="w-full"

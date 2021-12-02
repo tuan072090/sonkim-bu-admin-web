@@ -1,30 +1,16 @@
-import React, { useEffect} from "react";
+import React from "react";
 import {MoreHorizontal} from "react-feather";
-import { useDispatch, useSelector } from "react-redux";
 import {Image} from "../..";
-import { InsideApiService, Validator} from "../../../share";
-import { LOGOUT } from "../../../share/reducers/auth/auth.reducer";
 import styler from "./styler.module.scss";
+import {LogOut} from '../../../share/reducers/auth'
+import {useAppDispatch, useAppSelector} from "../../../share/store";
 
-const PageHeader = (props: any) => {
-    //@ts-ignore
-    const {user}=useSelector(state=>state.auth);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        if (user && Validator.isEmptyObj(user)) {
-            InsideApiService.AuthService.getProfile()
-                .then((profile) => {
-                    // console.log("profile", profile);
-                }).catch((err) => {
-                dispatch({type: LOGOUT, payload: null});
-            });
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [user]);
+const PageHeader = () => {
+    const {user} = useAppSelector(state => state.auth);
+    const dispatch = useAppDispatch();
 
     const _logout = () => {
-        dispatch({type: LOGOUT, payload: null});
+        dispatch(LogOut())
     }
 
     return (

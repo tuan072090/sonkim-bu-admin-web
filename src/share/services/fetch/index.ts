@@ -1,9 +1,9 @@
-import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
+import axios, {AxiosError, AxiosInstance, AxiosResponse} from 'axios';
 import MyError from "../error";
 import LocalStorageService from "../local-storage";
 import {CONFIGS} from "../../configs";
-import { store } from '../../store';
-import { LOGOUT } from '../../reducers/auth/auth.reducer';
+import {store} from '../../store'
+import {LogOut} from '../../reducers/auth'
 
 const apiUri = CONFIGS.REACT_APP_API_URI
 
@@ -24,7 +24,7 @@ class FetchData {
     constructor() {
         const accessToken = LocalStorageService.GetAccessToken();
         if (accessToken && accessToken.length > 0) {
-            this.headers = { Authorization: "Bearer " + accessToken }
+            this.headers = {Authorization: "Bearer " + accessToken}
         }
 
         this.axiosInstance = axios.create({
@@ -46,15 +46,15 @@ class FetchData {
         const errors = error.response?.data?.error?.errors || []
 
         if (status === 401 || status === 403) {
-            // @ts-ignore
-            store.dispatch(LOGOUT);
+            store.dispatch(LogOut())
+            this.headers = {}
         }
 
         throw new MyError(status, message, code, errors)
     }
 
-    public SetAccessToken(accessToken = "") {
-        this.headers = accessToken.length > 0 ? { Authorization: "Bearer " + accessToken } : {}
+    public SetAccessToken(accessToken:string|null) {
+        this.headers = accessToken && accessToken.length > 0 ? {Authorization: "Bearer " + accessToken} : {}
     }
 
     public GET(route: string, params = {}) {
@@ -78,9 +78,9 @@ class FetchData {
                     headers: this.headers
                 }).then(this.handleData).catch(this.handleError);
             case "POST":
-                return this.axiosInstance.post(route, { ...params }, { headers: this.headers }).then(this.handleData).catch(this.handleError);
+                return this.axiosInstance.post(route, {...params}, {headers: this.headers}).then(this.handleData).catch(this.handleError);
             case "PUT":
-                return this.axiosInstance.put(route, { ...params }, { headers: this.headers }).then(this.handleData).catch(this.handleError);
+                return this.axiosInstance.put(route, {...params}, {headers: this.headers}).then(this.handleData).catch(this.handleError);
 
             default:
                 throw new MyError(400, "Unknown method")
