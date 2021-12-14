@@ -5,7 +5,6 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import FetchDataService from "./services/fetch"; // defaults to localStorage for web
 
-
 //  redux persist
 const persistedReducer = persistReducer({
     key: 'root',
@@ -16,6 +15,7 @@ const persistedReducer = persistReducer({
 export const store = configureStore({
     reducer: persistedReducer
 });
+
 export const persistor = persistStore(store, null, () => {
     FetchDataService.SetAccessToken(store.getState().auth.accessToken)
 })
