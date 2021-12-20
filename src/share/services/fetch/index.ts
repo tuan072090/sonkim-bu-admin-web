@@ -22,10 +22,6 @@ class FetchData {
     }
 
     constructor() {
-        const accessToken = LocalStorageService.GetAccessToken();
-        if (accessToken && accessToken.length > 0) {
-            this.headers = {Authorization: "Bearer " + accessToken}
-        }
 
         this.axiosInstance = axios.create({
             baseURL: apiUri,
