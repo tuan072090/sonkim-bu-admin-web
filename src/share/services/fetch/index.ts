@@ -1,6 +1,5 @@
 import axios, {AxiosError, AxiosInstance, AxiosResponse} from 'axios';
 import MyError from "../error";
-import LocalStorageService from "../local-storage";
 import {CONFIGS} from "../../configs";
 import {store} from '../../store'
 import {LogOut} from '../../reducers/auth'

@@ -1,56 +1,76 @@
-@baseUrl = https://api.sonkim.upme.dev/bu-api
-# @baseUrl = http://localhost:1337/bu-api
+# @baseUrl = https://api.sonkim.upme.dev/bu-api
+@baseUrl = http://localhost:1337/bu-api
 
+@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiYnVzIjpbXSwiaWF0IjoxNjM5OTkzOTczLCJleHAiOjE2NDAyNTMxNzN9.GF9yLTyJQhGjrSY0jBgmpRxi02kY8tHDMpM4KVJ4hwg
+@refresh_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0a3YiOm51bGwsImlhdCI6MTYzOTk5Mzk3MywiZXhwIjoxNjQ1MTc3OTczLCJzdWIiOiI1In0.yaIPlsOheuDhrRIosOugSWMam6icu7WiFrn98L_KY8o
 
 ### Login
-POST https://api.sonkim.upme.dev/auth/local HTTP/1.1
-Content-Type: application/json
+POST {{baseUrl}}/login HTTP/1.1
+content-type: application/json
 
 {
     "identifier": "cgv",
     "password": "123123"
 }
 
+### Refresh token
+### Set "renew" = true if you want to re-new the refresh token
+POST {{baseUrl}}/refresh HTTP/1.1
+content-type: application/json
+
+{
+    "refresh_token": "{{refresh_token}}",
+    "renew": true
+}
+
+### Revoke token
+POST {{baseUrl}}/revoke HTTP/1.1
+content-type: application/json
+
+{
+    "refresh_token": "{{refresh_token}}"
+}
+
 ### Articles
 GET {{baseUrl}}/articles?_start=0&_limit=10&_sort=id:DESC
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM4MTYxMTc1LCJleHAiOjE2Mzg0MjAzNzV9.kIavU0VMsI_6CwM1i5ZvtXC-x1ojEPXhJLD-jRZK2cE
+Authorization: Bearer {{access_token}}
 
 
 ### Article detail
 GET {{baseUrl}}/articles/3 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM4MTYxMTc1LCJleHAiOjE2Mzg0MjAzNzV9.kIavU0VMsI_6CwM1i5ZvtXC-x1ojEPXhJLD-jRZK2cE
+Authorization: Bearer {{access_token}}
 
 ### Loyalty programs
 GET {{baseUrl}}/loyalty-programs?_start=0&_limit=10&_sort=id:DESC
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM4MTYxMTc1LCJleHAiOjE2Mzg0MjAzNzV9.kIavU0VMsI_6CwM1i5ZvtXC-x1ojEPXhJLD-jRZK2cE
+Authorization: Bearer {{access_token}}
 
 
 ### Loyalty program detail
 GET {{baseUrl}}/loyalty-programs/4 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM4MTYxMTc1LCJleHAiOjE2Mzg0MjAzNzV9.kIavU0VMsI_6CwM1i5ZvtXC-x1ojEPXhJLD-jRZK2cE
+Authorization: Bearer {{access_token}}
 
 ### Promotions
 GET {{baseUrl}}/promotions?_start=0&_limit=10&_sort=id:DESC
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM4MTYxMTc1LCJleHAiOjE2Mzg0MjAzNzV9.kIavU0VMsI_6CwM1i5ZvtXC-x1ojEPXhJLD-jRZK2cE
+Authorization: Bearer {{access_token}}
 
 
 ### Promotions detail
 GET {{baseUrl}}/promotions/4 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM4MTYxMTc1LCJleHAiOjE2Mzg0MjAzNzV9.kIavU0VMsI_6CwM1i5ZvtXC-x1ojEPXhJLD-jRZK2cE
+Authorization: Bearer {{access_token}}
 
 ### Stores
 GET {{baseUrl}}/stores?_start=0&_limit=10&_sort=id:DESC
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM4MTYxMTc1LCJleHAiOjE2Mzg0MjAzNzV9.kIavU0VMsI_6CwM1i5ZvtXC-x1ojEPXhJLD-jRZK2cE
+Authorization: Bearer {{access_token}}
 
 
 ### Store detail
 GET {{baseUrl}}/stores/4 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNjM4MTYxMTc1LCJleHAiOjE2Mzg0MjAzNzV9.kIavU0VMsI_6CwM1i5ZvtXC-x1ojEPXhJLD-jRZK2cE
+Authorization: Bearer {{access_token}}
