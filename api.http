@@ -1,8 +1,8 @@
-# @baseUrl = https://api.sonkim.upme.dev/bu-api
-@baseUrl = http://localhost:1337/bu-api
+@baseUrl = https://api.sonkim.upme.dev/bu-api
+# @baseUrl = http://localhost:1337/bu-api
 
-@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiYnVzIjpbXSwiaWF0IjoxNjM5OTkzOTczLCJleHAiOjE2NDAyNTMxNzN9.GF9yLTyJQhGjrSY0jBgmpRxi02kY8tHDMpM4KVJ4hwg
-@refresh_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0a3YiOm51bGwsImlhdCI6MTYzOTk5Mzk3MywiZXhwIjoxNjQ1MTc3OTczLCJzdWIiOiI1In0.yaIPlsOheuDhrRIosOugSWMam6icu7WiFrn98L_KY8o
+@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYnVzIjpbMV0sImlhdCI6MTY0MDA4MDkzNSwiZXhwIjoxNjQwMzQwMTM1fQ._cEc-ehR1Y3_i08CWdmU9ph3PXXH-1FaPdmS7-xPruo
+@refresh_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0a3YiOm51bGwsImlhdCI6MTY0MDA4MDkzNSwiZXhwIjoxNjQ1MjY0OTM1LCJzdWIiOiI5In0.eknTMBJtmRPreX3OCZ7AMsuNafSsvoMcvgPYkENTdQg
 
 ### Login
 POST {{baseUrl}}/login HTTP/1.1
@@ -31,6 +31,29 @@ content-type: application/json
     "refresh_token": "{{refresh_token}}"
 }
 
+### Upload image (Need to use Postman to test)
+POST {{baseUrl}}/uploads HTTP/1.1
+Authorization: Bearer {{access_token}}
+
+{
+    "files": "Files upload max 5 file and 5M each"
+}
+
+### Get list media uploaded
+GET {{baseUrl}}/uploads HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+### Get detail media
+GET {{baseUrl}}/uploads/61 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+### Delete detail media
+DELETE {{baseUrl}}/uploads/61 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
 ### Articles
 GET {{baseUrl}}/articles?_start=0&_limit=10&_sort=id:DESC
 Content-Type: application/json
@@ -38,7 +61,7 @@ Authorization: Bearer {{access_token}}
 
 
 ### Article detail
-GET {{baseUrl}}/articles/3 HTTP/1.1
+GET {{baseUrl}}/articles/7 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{access_token}}
 
