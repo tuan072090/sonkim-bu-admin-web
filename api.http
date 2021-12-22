@@ -1,7 +1,7 @@
-@baseUrl = https://api.sonkim.upme.dev/bu-api
-# @baseUrl = http://localhost:1337/bu-api
+# @baseUrl = https://api.sonkim.upme.dev/bu-api
+@baseUrl = http://localhost:1337/bu-api
 
-@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYnVzIjpbMV0sImlhdCI6MTY0MDA4MDkzNSwiZXhwIjoxNjQwMzQwMTM1fQ._cEc-ehR1Y3_i08CWdmU9ph3PXXH-1FaPdmS7-xPruo
+@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYnVzIjpbMl0sImlhdCI6MTY0MDE0MjIxMSwiZXhwIjoxNjQwNDAxNDExfQ.74dqDVF2ypvlskQLT7wpEZCMVTkFOscI926QsFtxlsA
 @refresh_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0a3YiOm51bGwsImlhdCI6MTY0MDA4MDkzNSwiZXhwIjoxNjQ1MjY0OTM1LCJzdWIiOiI5In0.eknTMBJtmRPreX3OCZ7AMsuNafSsvoMcvgPYkENTdQg
 
 ### Login
@@ -58,6 +58,34 @@ Authorization: Bearer {{access_token}}
 GET {{baseUrl}}/articles?_start=0&_limit=10&_sort=id:DESC
 Content-Type: application/json
 Authorization: Bearer {{access_token}}
+
+### Create articles
+POST {{baseUrl}}/articles
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+    "title": "title article test 1",
+    "slug": "title-slug-for-article-112",
+    "body": "some body 1",
+    "business_unit": 2,
+    "avatar": 38,
+    "locale": "vi-VN"
+}
+
+### Edit articles
+PUT {{baseUrl}}/articles/16
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+    "title": "title article test 3",
+    "slug": "title-slug-for-article-33",
+    "body": "some body 3",
+    "business_unit": 2,
+    "avatar": 4,
+    "locale": "vi-VN"
+}
 
 
 ### Article detail
