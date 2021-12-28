@@ -8,6 +8,7 @@ import {useDispatch} from "react-redux";
 import {useHistory} from "react-router";
 import {UpdateAccessToken, UpdateUser} from '../../../share/reducers/auth';
 import {UpdateMessage} from '../../../share/reducers/modal-msg'
+import {useAppSelector} from '../../../share/store'
 
 const LoginForm = () => {
     const dispatch = useDispatch();
@@ -22,9 +23,8 @@ const LoginForm = () => {
 
     const _submitHandler = async () => {
         try {
-            const {jwt, user} = await InsideApiService.AuthService.login(username, pass)
-
-            dispatch(UpdateAccessToken(jwt))
+            const {access_token, user} = await InsideApiService.AuthService.login(username, pass)
+            dispatch(UpdateAccessToken(access_token))
             dispatch(UpdateUser(user))
             dispatch(UpdateMessage({status: "success", title: "Đăng nhập thành công"}))
         } catch (err) {
