@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styles from './modal.module.scss';
 import Button from "../../atoms/button";
 import { useDispatch, useSelector } from "react-redux";
-import { UPDATE_ERROR } from "../../../share/reducers/modal-msg";
+import { UpdateError, UPDATE_ERROR } from "../../../share/reducers/modal-msg";
 
 const ErrorDialog = () => {
     //@ts-ignore
@@ -23,10 +23,7 @@ const ErrorDialog = () => {
     }, [dialogRef, error])
 
     const _close = () => {
-        dispatch({
-            type: UPDATE_ERROR,
-            payload: null
-        })
+        dispatch(UpdateError(null));
     }
 
     const isShow = !!error

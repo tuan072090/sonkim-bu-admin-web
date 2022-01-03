@@ -1,67 +1,102 @@
-import React, {useState} from "react";
-import {Box, Button, TextInput} from "../../index";
-import {InsideApiService} from "../../../share";
-import Image from '../../atoms/image'
-import LogoUri from '../../../static/logo.png'
-import MyError from "../../../share/services/error";
-import {useDispatch} from "react-redux";
-import {useHistory} from "react-router";
-import {UpdateAccessToken, UpdateUser} from '../../../share/reducers/auth';
-import {UpdateMessage} from '../../../share/reducers/modal-msg'
-import {useAppSelector} from '../../../share/store'
+import React, { useState } from "react";
+import { Box, Button, TextInput } from "../../index";
+import { InsideApiService } from "../../../share";
+import Image from "../../atoms/image";
+import LogoUri from "../../../static/logo.png";
+import { useDispatch } from "react-redux";
+import { UpdateAccessToken, UpdateUser } from "../../../share/reducers/auth";
+import { UpdateError, UpdateMessage } from "../../../share/reducers/modal-msg";
+import { useForm } from "react-hook-form";
 
+interface IFormInputs {
+    username: string;
+    password: string;
+}
 const LoginForm = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
-    const [username, setUsername] = useState("");
-    const [pass, setPass] = useState('');
 
-    const _onUsernameChange = (event: React.FormEvent<HTMLInputElement>) => {
-        const value = event.currentTarget.value
-        setUsername(value)
-    }
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<IFormInputs>();
 
-    const _submitHandler = async () => {
+    const _onSubmit = async (data: IFormInputs) => {
         try {
-            const {access_token, user} = await InsideApiService.AuthService.login(username, pass)
-            dispatch(UpdateAccessToken(access_token))
-            dispatch(UpdateUser(user))
-            dispatch(UpdateMessage({status: "success", title: "Đăng nhập thành công"}))
-        } catch (err) {
-            dispatch(UpdateMessage(new MyError(400, "Sai thông tin đăng nhập")))
+            const { username, password } = data;
+            const { access_token, user } =
+                await InsideApiService.AuthService.login(username, password);
+            dispatch(UpdateAccessToken(access_token));
+            dispatch(UpdateUser(user));
+            dispatch(
+                UpdateMessage({
+                    status: "success",
+                    title: "Đăng nhập thành công",
+                })
+            );
+        } catch (error) {
+            dispatch(
+                UpdateError({status:400,message:"Sai thông tin đăng nhập"})
+            );
         }
-    }
-
+        console.log("xong roi ne");
+    };
     return (
-        <Box className="w-full max-w-md">
+        <Box className="w-full max-w-md mx-auto mt-4">
             <div className="pt-3 pb-5 flex justify-center">
-                <Image src={LogoUri} width={100}/>
+                <Image src={LogoUri} width={100} />
             </div>
             <h2 className="text-center text-2xl text-indigo-900 font-display font-semibold mt-3">
                 Đăng nhập
             </h2>
-            <div className="mt-12 px-2">
+            <form className="mt-12 px-2" onSubmit={handleSubmit(_onSubmit)}>
                 <div>
-                    <div className="text-sm font-bold text-gray-700 tracking-wide mb-2">
+                    <label className="block text-sm font-bold text-gray-700 tracking-wide mb-2">
                         Username / Email
-                    </div>
-                    <TextInput onChange={_onUsernameChange} placeholder="username/email" className="w-full"/>
+                    </label>
+                    <input
+                        placeholder="username/email"
+                        className="w-full py-2 px-3 border rounded-md focus:outline-none focus:ring-2"
+                        {...register("username", {
+                            required: true,
+                            maxLength: 20,
+                        })}
+                    />
+                    {errors?.username?.type === "required" && (
+                        <p className="italic text-xs text-red-500">
+                            *Không được để trống Username
+                        </p>
+                    )}
+                    {errors?.username?.type === "maxLength" && (
+                        <p className="italic text-xs text-red-500">
+                            *Không được quá 20 kí tự
+                        </p>
+                    )}
                 </div>
                 <div className="mt-8">
-                    <div className="flex justify-between items-center">
-                        <div className="text-sm font-bold text-gray-700 tracking-wide mb-2">
-                            Mật khẩu
-                        </div>
-                    </div>
-                    <TextInput type="password" onChange={(e) => setPass(e.target.value)} placeholder="Password"
-                               className="w-full"/>
+                    <label className="block text-sm font-bold text-gray-700 tracking-wide mb-2">
+                        Mật khẩu
+                    </label>
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        className="w-full py-2 px-3 border rounded-md focus:outline-none focus:ring-2"
+                        {...register("password", { required: true })}
+                    />
+                    {errors?.password?.type === "required" && (
+                        <p className="italic text-xs text-red-500">
+                            *Không được để trống password
+                        </p>
+                    )}
                 </div>
                 <div className="my-10">
-                    <Button color="green" className="w-full"
-                            disabled={(!(username.length > 0 && pass.length > 0))}
-                            onClick={_submitHandler}>Đăng nhập</Button>
+                    <input
+                        type="submit"
+                        value="Đăng nhập"
+                        className="w-full bg-green-500 rounded-lg border border-green-500 ripple text-white hover:bg-green-700 py-2 px-4 text-base"
+                    />
                 </div>
-            </div>
+            </form>
         </Box>
     );
 };
