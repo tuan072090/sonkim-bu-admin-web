@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { ChevronLeft } from "react-feather";
 import { useHistory, useParams } from "react-router";
-import { Box, Button, Layout, TextInputForm } from "../../components";
+import { Box, Button, Layout, TextInput } from "../../components";
 import insiteApi from "../../share/services/insite-api";
 import { DateFormat } from "../../share/utils/formater";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { UpdateError, UpdateMessage } from "../../share/reducers/modal-msg";
 
 interface IFormInput {
     title?: string;
     slug?: string;
-    body?: string;
-    business_unit?: number;
-    avatar?: number;
-    locale?: string;
 }
 
 const ArticleDetailPage = Layout(() => {
     const params = useParams<{ id: string }>();
+    const dispatch=useDispatch();
     const [articleDetail, setArticleDetail] = useState<any>(null);
+    const [description,setDescription]=useState<string>("");
     const history = useHistory();
     const {
         register,
@@ -27,8 +27,22 @@ const ArticleDetailPage = Layout(() => {
         formState: { errors },
     } = useForm<IFormInput>();
 
-    const _onSubmit = (data: IFormInput) => {
-        alert(JSON.stringify(data));
+    const _onSubmit =async (data: IFormInput) => {
+        const {title,slug}=data;
+        const body=description;
+        const business_unit=articleDetail.business_unit.id;
+        const avatar=articleDetail.avatar.id;
+        const locale=articleDetail.locale;
+        const payload={title,slug,
+            body,business_unit,avatar,locale
+        };
+        try {
+            const data=await insiteApi.ArticleService.updateArticleDetail(+params.id,payload);
+            dispatch(UpdateMessage({status:"success",title:"Cập nhật thành công"}));
+            history.replace("/articles")
+        } catch (error) {
+            dispatch(UpdateError({message:"Update không thành công"}))
+        }
     };
 
     const _fetchArticleDetail = async () => {
@@ -137,7 +151,9 @@ const ArticleDetailPage = Layout(() => {
                                             });
                                         }}
                                         onBlur={(event, editor) => {
+                                            const data=editor.getData();
                                             console.log("Blur.", editor);
+                                            setDescription(data);
                                         }}
                                         onFocus={(event, editor) => {
                                             console.log("Focus.", editor);
@@ -148,7 +164,7 @@ const ArticleDetailPage = Layout(() => {
                                     <label className="font-semibold text-base mb-1">
                                         Created at:
                                     </label>
-                                    <TextInputForm
+                                    <TextInput
                                         size="small"
                                         value={DateFormat(
                                             articleDetail.created_at
@@ -156,7 +172,7 @@ const ArticleDetailPage = Layout(() => {
                                         type="text"
                                         disabled
                                         className="w-100"
-                                    ></TextInputForm>
+                                    ></TextInput>
                                 </div>
                                 <div className="my-10">
                                     <input
@@ -169,7 +185,58 @@ const ArticleDetailPage = Layout(() => {
                         </div>
                     </Box>
                     <Box>
-                        <h4 className="font-bold text-xl mb-4">Thông tin BU</h4>
+                        <div className="flex flex-col justify-center">
+                            <h5 className="font-semibold text-lg mb-4">
+                                Thông tin BU
+                            </h5>
+                            <div className="flex flex-col mb-4">
+                                <label className="font-semibold text-base mb-1">
+                                    Tên:
+                                </label>
+                                <TextInput
+                                    size="small"
+                                    value={
+                                        articleDetail.business_unit.name
+                                    }
+                                    type="text"
+                                    disabled
+                                    className="w-full"
+                                ></TextInput>
+                            </div>
+                            <div className="flex flex-col mb-4">
+                                <label className="font-semibold text-base mb-1">
+                                    Slug:
+                                </label>
+                                <TextInput
+                                    size="small"
+                                    value={
+                                        articleDetail.business_unit.slug
+                                    }
+                                    type="text"
+                                    disabled
+                                    className="w-100"
+                                ></TextInput>
+                            </div>
+                            <div className="flex flex-col mb-4">
+                                <label className="font-semibold text-base mb-1">
+                                    Cover:
+                                </label>
+                                <img
+                                    src={
+                                        articleDetail.business_unit.cover
+                                            .formats.thumbnail.url
+                                    }
+                                    height={
+                                        articleDetail.business_unit.cover
+                                            .formats.thumbnail.height
+                                    }
+                                    width={
+                                        articleDetail.business_unit.cover
+                                            .formats.thumbnail.width
+                                    }
+                                />
+                            </div>
+                        </div>
                     </Box>
                 </>
             ) : null}
