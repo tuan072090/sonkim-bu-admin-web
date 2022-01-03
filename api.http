@@ -1,8 +1,8 @@
 @baseUrl = https://api.sonkim.upme.dev/bu-api
 # @baseUrl = http://localhost:1337/bu-api
 
-@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYnVzIjpbMV0sImlhdCI6MTY0MDY3NzMyOSwiZXhwIjoxNjQwOTM2NTI5fQ.eg58Qz90mlAp6RPqBcJkwbnAbF80uxRRaDAwhtwtDZQ
-@refresh_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0a3YiOm51bGwsImlhdCI6MTY0MDA4MDkzNSwiZXhwIjoxNjQ1MjY0OTM1LCJzdWIiOiI5In0.eknTMBJtmRPreX3OCZ7AMsuNafSsvoMcvgPYkENTdQg
+@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYnVzIjpbMV0sImlhdCI6MTY0MTIwNjM4MSwiZXhwIjoxNjQxNDY1NTgxfQ.1XScLMH94h-iGvZ9fE1QaML-dIB-s1FxoyO5oVY_OW4
+@refresh_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0a3YiOm51bGwsImlhdCI6MTY0MTIwNjM4MSwiZXhwIjoxNjQ2MzkwMzgxLCJzdWIiOiI5In0.4Ycw3_sicEVBfuB37_fjrCBDcmvSJgViXr8E-fXsdQk
 
 ### Login
 POST {{baseUrl}}/login HTTP/1.1
@@ -65,31 +65,32 @@ Content-Type: application/json
 Authorization: Bearer {{access_token}}
 
 {
-    "title": "title article test 1",
+    "title": "title article test demo 1",
     "slug": "title-slug-for-article-112",
     "body": "some body 1",
-    "business_unit": 2,
-    "avatar": 38,
+    "business_unit": 1,
+    "avatar": 40,
     "locale": "vi-VN"
 }
+//https://api.sonkim.upme.dev/bu-api/articles
 
 ### Edit articles
-PUT {{baseUrl}}/articles/16
+PUT {{baseUrl}}/articles/5
 Content-Type: application/json
 Authorization: Bearer {{access_token}}
 
 {
-    "title": "title article test 3",
+    "title": "title article test demo 1",
     "slug": "title-slug-for-article-33",
     "body": "some body 3",
-    "business_unit": 2,
+    "business_unit": 1,
     "avatar": 4,
     "locale": "vi-VN"
 }
 
 
 ### Article detail
-GET {{baseUrl}}/articles/7 HTTP/1.1
+GET {{baseUrl}}/articles/3 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{access_token}}
 
@@ -100,7 +101,7 @@ Authorization: Bearer {{access_token}}
 
 
 ### Loyalty program detail
-GET {{baseUrl}}/loyalty-programs/4 HTTP/1.1
+GET {{baseUrl}}/loyalty-programs/1 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{access_token}}
 
@@ -111,10 +112,10 @@ Authorization: Bearer {{access_token}}
 
 
 ### Promotions detail
-GET {{baseUrl}}/promotions/4 HTTP/1.1
+GET {{baseUrl}}/promotions/16 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{access_token}}
-# @baseUrl = https://api.sonkim.upme.dev/bu-api/promotions
+
 ### Stores
 GET {{baseUrl}}/stores?_start=0&_limit=10&_sort=id:DESC
 Content-Type: application/json
@@ -122,6 +123,6 @@ Authorization: Bearer {{access_token}}
 
 
 ### Store detail
-GET {{baseUrl}}/stores/4 HTTP/1.1
+GET {{baseUrl}}/stores/6 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{access_token}}
