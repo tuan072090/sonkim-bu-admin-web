@@ -1,7 +1,7 @@
 @baseUrl = https://api.sonkim.upme.dev/bu-api
 # @baseUrl = http://localhost:1337/bu-api
 
-@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYnVzIjpbMV0sImlhdCI6MTY0MTIwNjc5OSwiZXhwIjoxNjQxNDY1OTk5fQ.eSTEA19l4_39g_k3yeV1ceTgTlilsibolAtn2hczKJs
+@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYnVzIjpbMV0sImlhdCI6MTY0MTI4NjkwNywiZXhwIjoxNjQxNTQ2MTA3fQ.jXA6dkuS9eopvR1CbCgtRQD725brXsSyDhKWQ9yHLsc
 @refresh_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0a3YiOm51bGwsImlhdCI6MTY0MDY3NzczNywiZXhwIjoxNjQ1ODYxNzM3LCJzdWIiOiI5In0.eWd9Rb-VDlJsaMlVzrtGyOq6zlvtKM9UCuW7owXk8Wo
 
 ### Login
@@ -133,17 +133,39 @@ Authorization: Bearer {{access_token}}
 
 
 ### User detail
-GET {{baseUrl}}/users/4 HTTP/1.1
+GET {{baseUrl}}/users/19 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{access_token}}
 
 ### Gift cards
-GET {{baseUrl}}/gift-cards?_start=0&_limit=10&_sort=id:DESC
+GET {{baseUrl}}/giftcards?_start=0&_limit=10&_sort=id:DESC
 Content-Type: application/json
 Authorization: Bearer {{access_token}}
 
 
-### User detail
-GET {{baseUrl}}/gift-cards/4 HTTP/1.1
+### Gift cards detail
+GET {{baseUrl}}/giftcards/4 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+### Gift card orders
+GET {{baseUrl}}/giftcard-orders?_start=0&_limit=10&_sort=id:DESC
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+
+### Gift cards detail
+GET {{baseUrl}}/giftcard-orders/4 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+### Promotion orders
+GET {{baseUrl}}/promotion-orders?_start=0&_limit=10&_sort=id:DESC
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+
+### Promotion detail
+GET {{baseUrl}}/promotion-orders/9 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{access_token}}

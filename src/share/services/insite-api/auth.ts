@@ -4,12 +4,12 @@ const AuthService = {
 
     login: async (username: string, password: string) => {
         try {
-            const { jwt, user } = await FetchDataService.POST("/auth/local", {
+            const { access_token, user } = await FetchDataService.POST("/bu-api/login", {
                 identifier: username,
                 password: password
             });
 
-            return { jwt, user };
+            return { access_token, user };
         } catch (err) {
             throw err
         }

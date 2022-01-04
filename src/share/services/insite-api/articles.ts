@@ -17,6 +17,16 @@ const ArticleService={
         } catch (error) {
             throw error;
         }
+    },
+
+    updateArticleDetail: async (articleId:number,payload:any)=>{
+        try {
+            // const {title,slug,body,business_unit,avatar,locale}=payload;
+            const data=await FetchDataService.PUT(`/bu-api/articles/${articleId}`,payload);
+            return data;
+        } catch (error) {
+            throw error;
+        }
     }
 }
 
