@@ -1,8 +1,8 @@
-# @baseUrl = https://api.sonkim.upme.dev/bu-api
-@baseUrl = http://localhost:1337/bu-api
+@baseUrl = https://api.sonkim.upme.dev/bu-api
+# @baseUrl = http://localhost:1337/bu-api
 
-@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYnVzIjpbMl0sImlhdCI6MTY0MDE0MjIxMSwiZXhwIjoxNjQwNDAxNDExfQ.74dqDVF2ypvlskQLT7wpEZCMVTkFOscI926QsFtxlsA
-@refresh_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0a3YiOm51bGwsImlhdCI6MTY0MDA4MDkzNSwiZXhwIjoxNjQ1MjY0OTM1LCJzdWIiOiI5In0.eknTMBJtmRPreX3OCZ7AMsuNafSsvoMcvgPYkENTdQg
+@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYnVzIjpbMV0sImlhdCI6MTY0MTIwNjc5OSwiZXhwIjoxNjQxNDY1OTk5fQ.eSTEA19l4_39g_k3yeV1ceTgTlilsibolAtn2hczKJs
+@refresh_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0a3YiOm51bGwsImlhdCI6MTY0MDY3NzczNywiZXhwIjoxNjQ1ODYxNzM3LCJzdWIiOiI5In0.eWd9Rb-VDlJsaMlVzrtGyOq6zlvtKM9UCuW7owXk8Wo
 
 ### Login
 POST {{baseUrl}}/login HTTP/1.1
@@ -123,5 +123,27 @@ Authorization: Bearer {{access_token}}
 
 ### Store detail
 GET {{baseUrl}}/stores/4 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+### Users
+GET {{baseUrl}}/users?_start=0&_limit=10&_sort=id:DESC
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+
+### User detail
+GET {{baseUrl}}/users/4 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+### Gift cards
+GET {{baseUrl}}/gift-cards?_start=0&_limit=10&_sort=id:DESC
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+
+### User detail
+GET {{baseUrl}}/gift-cards/4 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{access_token}}
