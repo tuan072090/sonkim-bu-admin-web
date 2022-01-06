@@ -1,71 +1,51 @@
 {
-    "name": "chodeli-admin",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "dev:window": "SET ENV=development && SET PORT=3000 && craco start",
-        "dev": "ENV=development && PORT=3000 && craco start",
-        "build": "craco build",
-        "test": "craco test",
-        "eject": "react-scripts eject"
-    },
-    "dependencies": {
-        "@ckeditor/ckeditor5-build-classic": "^31.0.0",
-        "@ckeditor/ckeditor5-react": "^3.0.3",
-        "@craco/craco": "^6.3.0",
-        "@reduxjs/toolkit": "^1.6.2",
-        "@testing-library/jest-dom": "^5.11.4",
-        "@testing-library/react": "^11.1.0",
-        "@testing-library/user-event": "^12.1.10",
-        "@types/jest": "^26.0.15",
-        "@types/node": "^12.0.0",
-        "@types/react": "^17.0.0",
-        "@types/react-dom": "^17.0.0",
-        "@types/react-redux": "^7.1.20",
-        "axios": "^0.21.4",
-        "js-cookie": "^3.0.1",
-        "moment": "^2.29.1",
-        "node-sass": "^5.0.0",
-        "react": "^17.0.2",
-        "react-data-table-component": "^7.4.5",
-        "react-data-table-component-extensions": "^1.5.2",
-        "react-dom": "^17.0.2",
-        "react-error-boundary": "^3.1.4",
-        "react-feather": "^2.0.9",
-        "react-hook-form": "^7.22.5",
-        "react-redux": "^7.2.6",
-        "react-router-dom": "^5.3.0",
-        "react-scripts": "4.0.3",
-        "recharts": "^2.1.6",
-        "redux": "^4.1.2",
-        "redux-persist": "^6.0.0",
-        "styled-components": "^5.3.3",
-        "ts-custom-error": "^3.2.0",
-        "typescript": "^4.1.2",
-        "web-vitals": "^1.0.1"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "devDependencies": {
-        "@types/react-router-dom": "^5.1.9",
-        "autoprefixer": "^9",
-        "postcss": "^7",
-        "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.16"
-    }
+  "name": "bu-admin",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^31.0.0",
+    "@ckeditor/ckeditor5-react": "^3.0.3",
+    "@craco/craco": "^6.3.0",
+    "@reduxjs/toolkit": "^1.6.2",
+    "axios": "^0.21.4",
+    "js-cookie": "^3.0.1",
+    "moment": "^2.29.1",
+    "react": "^17.0.2",
+    "react-data-table-component": "^7.4.5",
+    "react-data-table-component-extensions": "^1.5.2",
+    "react-dom": "^17.0.2",
+    "react-error-boundary": "^3.1.4",
+    "react-feather": "^2.0.9",
+    "react-hook-form": "^7.22.5",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^5.3.0",
+    "recharts": "^2.1.6",
+    "redux": "^4.1.2",
+    "redux-persist": "^6.0.0",
+    "styled-components": "^5.3.3",
+    "ts-custom-error": "^3.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/js-cookie": "^3.0.1",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.33",
+    "@types/react-dom": "^17.0.10",
+    "@types/react-redux": "^7.1.20",
+    "@types/react-router-dom": "^5.3.2",
+    "@vitejs/plugin-react": "^1.0.7",
+    "autoprefixer": "^10.4.1",
+    "postcss": "^8.4.5",
+    "sass": "^1.46.0",
+    "tailwindcss": "^3.0.11",
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2"
+  }
 }

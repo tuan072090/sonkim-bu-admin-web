@@ -32,11 +32,7 @@ const columns: TableColumn<DataRow>[] = [
     {
         name: "Image",
         cell: (row) => (
-            <img
-                src={row.avatar.formats.thumbnail.url}
-                width={200}
-                height={"auto"}
-            />
+            <img src={row.avatar.formats.thumbnail.url} className="max-w-20 h-10"/>
         ),
         reorder: true,
         center: true,

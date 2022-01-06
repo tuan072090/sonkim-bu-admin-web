@@ -1,6 +1,5 @@
 import { UserType } from "../../data-types/user";
-
-const Cookies = require('js-cookie');
+import Cookies from 'js-cookie';
 
 class LocalStorage {
     public ACCESS_TOKEN_KEY = "accessToken";

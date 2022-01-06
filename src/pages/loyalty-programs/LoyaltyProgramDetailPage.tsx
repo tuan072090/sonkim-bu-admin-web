@@ -5,7 +5,9 @@ import { useHistory } from "react-router-dom";
 import { Box, Button, Layout, SwitchButton, TextInput } from "../../components";
 import insiteApi from "../../share/services/insite-api";
 import { DateFormat } from "../../share/utils/formater";
+// @ts-ignore
 import { CKEditor } from "@ckeditor/ckeditor5-react";
+// @ts-ignore
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const LoyaltyProgramDetailPage = Layout(() => {
@@ -44,7 +46,7 @@ const LoyaltyProgramDetailPage = Layout(() => {
                                     className="w-24 flex flex-row items-center justify-evenly"
                                     onClick={_onBackButtonClick}
                                 >
-                                    <ChevronLeft></ChevronLeft>
+                                    <ChevronLeft/>
                                     <p>Trở về</p>
                                 </Button>
                             </div>
@@ -54,7 +56,7 @@ const LoyaltyProgramDetailPage = Layout(() => {
                                 </label>
                                 <SwitchButton
                                     value={loyaltyProgramDetail.active}
-                                ></SwitchButton>
+                                />
                             </div>
                             <div className="flex flex-col mb-4">
                                 <label className="font-semibold text-base mb-1">
@@ -66,7 +68,7 @@ const LoyaltyProgramDetailPage = Layout(() => {
                                     type="text"
                                     disabled
                                     className="w-full"
-                                ></TextInput>
+                                />
                             </div>
                             <div className="flex flex-col mb-4">
                                 <label className="font-semibold text-base mb-1">
@@ -94,21 +96,21 @@ const LoyaltyProgramDetailPage = Layout(() => {
                                 <CKEditor
                                     editor={ClassicEditor}
                                     data={loyaltyProgramDetail.body}
-                                    onReady={(editor) => {
+                                    onReady={(editor:any) => {
                                         // You can store the "editor" and use when it is needed.
                                         console.log(
                                             "Editor is ready to use!",
                                             editor
                                         );
                                     }}
-                                    onChange={(event, editor) => {
+                                    onChange={(event:any, editor:any) => {
                                         const data = editor.getData();
                                         console.log({ event, editor, data });
                                     }}
-                                    onBlur={(event, editor) => {
+                                    onBlur={(event:any, editor:any) => {
                                         console.log("Blur.", editor);
                                     }}
-                                    onFocus={(event, editor) => {
+                                    onFocus={(event:any, editor:any) => {
                                         console.log("Focus.", editor);
                                     }}
                                 />
@@ -125,7 +127,7 @@ const LoyaltyProgramDetailPage = Layout(() => {
                                     type="text"
                                     disabled
                                     className="w-100"
-                                ></TextInput>
+                                />
                             </div>
                         </div>
                     </Box>
@@ -147,7 +149,7 @@ const LoyaltyProgramDetailPage = Layout(() => {
                                     type="text"
                                     disabled
                                     className="w-full"
-                                ></TextInput>
+                                />
                             </div>
                             <div className="flex flex-col mb-4">
                                 <label className="font-semibold text-base mb-1">
@@ -161,7 +163,7 @@ const LoyaltyProgramDetailPage = Layout(() => {
                                     type="text"
                                     disabled
                                     className="w-100"
-                                ></TextInput>
+                                />
                             </div>
                             <div className="flex flex-col mb-4">
                                 <label className="font-semibold text-base mb-1">
@@ -202,7 +204,7 @@ const LoyaltyProgramDetailPage = Layout(() => {
                                     type="text"
                                     disabled
                                     className="w-full"
-                                ></TextInput>
+                                />
                             </div>
 
                             <div className="flex flex-col mb-4">

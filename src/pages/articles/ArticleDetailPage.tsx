@@ -4,7 +4,9 @@ import { useHistory, useParams } from "react-router";
 import { Box, Button, Layout, TextInput } from "../../components";
 import insiteApi from "../../share/services/insite-api";
 import { DateFormat } from "../../share/utils/formater";
+// @ts-ignore
 import { CKEditor } from "@ckeditor/ckeditor5-react";
+// @ts-ignore
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -135,14 +137,14 @@ const ArticleDetailPage = Layout(() => {
                                     <CKEditor
                                         editor={ClassicEditor}
                                         data={articleDetail.body}
-                                        onReady={(editor) => {
+                                        onReady={(editor:any) => {
                                             // You can store the "editor" and use when it is needed.
                                             console.log(
                                                 "Editor is ready to use!",
                                                 editor
                                             );
                                         }}
-                                        onChange={(event, editor) => {
+                                        onChange={(event:any, editor:any) => {
                                             const data = editor.getData();
                                             console.log({
                                                 event,
@@ -150,12 +152,12 @@ const ArticleDetailPage = Layout(() => {
                                                 data,
                                             });
                                         }}
-                                        onBlur={(event, editor) => {
+                                        onBlur={(event:any, editor:any) => {
                                             const data=editor.getData();
                                             console.log("Blur.", editor);
                                             setDescription(data);
                                         }}
-                                        onFocus={(event, editor) => {
+                                        onFocus={(event:any, editor:any) => {
                                             console.log("Focus.", editor);
                                         }}
                                     />
@@ -172,7 +174,7 @@ const ArticleDetailPage = Layout(() => {
                                         type="text"
                                         disabled
                                         className="w-100"
-                                    ></TextInput>
+                                    />
                                 </div>
                                 <div className="my-10">
                                     <input
@@ -201,7 +203,7 @@ const ArticleDetailPage = Layout(() => {
                                     type="text"
                                     disabled
                                     className="w-full"
-                                ></TextInput>
+                                />
                             </div>
                             <div className="flex flex-col mb-4">
                                 <label className="font-semibold text-base mb-1">
@@ -215,7 +217,7 @@ const ArticleDetailPage = Layout(() => {
                                     type="text"
                                     disabled
                                     className="w-100"
-                                ></TextInput>
+                                />
                             </div>
                             <div className="flex flex-col mb-4">
                                 <label className="font-semibold text-base mb-1">
