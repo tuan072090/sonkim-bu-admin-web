@@ -8,7 +8,10 @@ const Routers = {
     PROMOTIONS:'/promotions',
     STORES:'/stores',
     LOYALTY_PROGRAMS:'/loyalty-programs',
-    TEST:'/test'
+    TEST:'/test',
+    USERS:'/users',
+    GIFTCARDS:'/giftcards',
+    GIFTCARD_ORDERS:'/giftcard-orders'
 }
 
 export default Routers

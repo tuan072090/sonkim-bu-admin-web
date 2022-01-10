@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "../../atoms/image";
-import {Activity, Archive, Book, FilePlus, Grid, Heart, Tag, List, Menu, Settings} from 'react-feather'
+import {Activity, Archive, Book, FilePlus, Grid, Heart, Tag, List, Menu, Settings, Users, CreditCard, FileText} from 'react-feather'
 import MenuItem from "../../molecules/menu-item";
 import MenuIcon from "../../molecules/menu-item/MenuIcon";
 import {Routers, useLocalStorage} from "../../../share";
@@ -33,6 +33,12 @@ const Sidebar = () => {
                               icon={<Tag size={20}/>}/>
                     <MenuIcon href={Routers.STORES} active={location.pathname === Routers.STORES}
                               icon={<Archive size={20}/>}/>
+                    <MenuIcon href={Routers.USERS} active={location.pathname === Routers.USERS}
+                              icon={<Users size={20}/>}/>
+                    <MenuIcon href={Routers.GIFTCARDS} active={location.pathname === Routers.GIFTCARDS}
+                              icon={<CreditCard size={20}/>}/>
+                    <MenuIcon href={Routers.GIFTCARD_ORDERS} active={location.pathname === Routers.GIFTCARD_ORDERS}
+                              icon={<FileText size={20}/>}/>
                 </div>
 
                 <div className="flex-shrink-0 border-t border-gray-200">

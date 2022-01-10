@@ -17,6 +17,9 @@ import {ErrorFallback} from "./components";
 import {PersistGate} from 'redux-persist/integration/react'
 import Loader from "./components/atoms/loader";
 import TestPage from "./pages/test";
+import UsersPage from "./pages/users";
+import GiftCardsPage from "./pages/giftcards";
+import GiftCardOrdersPage from "./pages/giftcard-orders";
 
 const App = () => {
     const _reset = () => {
@@ -40,6 +43,9 @@ const App = () => {
                             <Route path={Routers.STORES + "/:id"} exact={true} component={StoreDetailPage}/>
                             <Route path={Routers.STORES} component={StoresPage}/>
                             <Route path={Routers.TEST} component={TestPage}/>
+                            <Route path={Routers.USERS} component={UsersPage}/>
+                            <Route path={Routers.GIFTCARDS} component={GiftCardsPage}/>
+                            <Route path={Routers.GIFTCARD_ORDERS} component={GiftCardOrdersPage}/>
                         </Switch>
                     </Router>
                 </PersistGate>
