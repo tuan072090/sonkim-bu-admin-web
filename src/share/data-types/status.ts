@@ -1,5 +1,3 @@
-
-
 export type StatusType =
     | "primary"
     | "info"

@@ -1,10 +1,13 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from './modal.module.scss';
-import { AppProvider } from "../../../share";
 import Button from "../../atoms/button";
+import { useDispatch, useSelector } from "react-redux";
+import { UpdateError, UPDATE_ERROR } from "../../../share/reducers/modal-msg";
 
 const ErrorDialog = () => {
-    const { error, dispatch } = useContext(AppProvider.context)
+    //@ts-ignore
+    const {error}=useSelector(state=>state.modalMsg);
+    const dispatch=useDispatch();
 
     const dialogRef = useRef(null)
 
@@ -20,10 +23,7 @@ const ErrorDialog = () => {
     }, [dialogRef, error])
 
     const _close = () => {
-        dispatch({
-            type: AppProvider.actions.UPDATE_ERROR,
-            data: null
-        })
+        dispatch(UpdateError(null));
     }
 
     const isShow = !!error

@@ -1,27 +1,8 @@
 module.exports = {
-    // mode: 'jit',  //  just in time
-    purge: {
-        content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-        safelist: [
-            "bg-primary-50",
-            "bg-primary-500",
-            "bg-primary-700",
-            "bg-gray-500",
-            "bg-red-500",
-            "bg-yellow-500",
-            "bg-blue-500",
-            "border-red-500",
-            "text-primary-500",
-            "text-mainTextColor",
-            "focus:ring-primary-500",
-            //  hover
-            "hover:bg-red-700",
-            "hover:bg-yellow-700",
-            "hover:bg-green-700",
-            "hover:bg-blue-700",
-            "hover:bg-primary-700",
-        ],
-    },
+    content: [
+        "./index.html",
+        "./src/**/*.{js,ts,jsx,tsx}",
+    ],
     darkMode: false, // or 'media' or 'class'
     theme: {
         extend: {

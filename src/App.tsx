@@ -1,36 +1,56 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import AuthPage from "./pages/auth";
-import { Routers } from "./share";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {Provider} from 'react-redux';
+import {ErrorBoundary} from "react-error-boundary";
+import {Routers} from "./share";
 import DashBoardPage from "./pages/dashboard";
-import Categories from "./pages/categories";
-import Product from "./pages/product";
-import OrdersPage from "./pages/orders";
-import NotificationsPage from "./pages/notifications";
-import WarehousePage from "./pages/warehouse";
-import OrderDetail from "./pages/orders/OrderDetail";
+import ArticlesPage from "./pages/articles";
+import LoyaltyProgramsPage from "./pages/loyalty-programs";
+import PromotionsPage from "./pages/promotions";
+import StoresPage from "./pages/stores";
+import ArticleDetailPage from "./pages/articles/ArticleDetailPage";
+import LoyaltyProgramDetailPage from "./pages/loyalty-programs/LoyaltyProgramDetailPage";
+import PromotionDetailPage from "./pages/promotions/PromotionDetailPage";
+import StoreDetailPage from "./pages/stores/StoreDetailPage";
+import {persistor, store} from './share/store';
+import {ErrorFallback} from "./components";
+import {PersistGate} from 'redux-persist/integration/react'
+import Loader from "./components/atoms/loader";
+import TestPage from "./pages/test";
+import UsersPage from "./pages/users";
+import GiftCardsPage from "./pages/giftcards";
+import GiftCardOrdersPage from "./pages/giftcard-orders";
 
 const App = () => {
+    const _reset = () => {
+        window.location.reload()
+    }
+
     return (
-        <Router>
-            <Switch>
-                <Route path="/" exact={true} component={DashBoardPage}/>
-
-                <Route path={Routers.LOGIN} component={AuthPage} />
-
-                <Route path={Routers.PRODUCTS} component={Product}/>
-
-                <Route path={Routers.CATEGORIES} component={Categories}/>
-
-                <Route path={Routers.ORDERS+"/:id"} component={OrderDetail}/>
-                <Route path={Routers.ORDERS} component={OrdersPage}/>
-
-                <Route path={Routers.NOTIFICATIONS} component={NotificationsPage}/>
-
-                <Route path={Routers.WAREHOUSE} component={WarehousePage}/>
-
-            </Switch>
-        </Router>
+        <ErrorBoundary FallbackComponent={ErrorFallback} onReset={_reset}>
+            <Provider store={store}>
+                <PersistGate loading={<Loader/>} persistor={persistor}>
+                    <Router>
+                        <Switch>
+                            <Route path="/" exact={true} component={DashBoardPage}/>
+                            <Route path={Routers.ARTICLES + "/:id"} exact={true} component={ArticleDetailPage}/>
+                            <Route path={Routers.ARTICLES} component={ArticlesPage}/>
+                            <Route path={Routers.LOYALTY_PROGRAMS + "/:id"} exact={true}
+                                   component={LoyaltyProgramDetailPage}/>
+                            <Route path={Routers.LOYALTY_PROGRAMS} component={LoyaltyProgramsPage}/>
+                            <Route path={Routers.PROMOTIONS + "/:id"} exact={true} component={PromotionDetailPage}/>
+                            <Route path={Routers.PROMOTIONS} component={PromotionsPage}/>
+                            <Route path={Routers.STORES + "/:id"} exact={true} component={StoreDetailPage}/>
+                            <Route path={Routers.STORES} component={StoresPage}/>
+                            <Route path={Routers.TEST} component={TestPage}/>
+                            <Route path={Routers.USERS} component={UsersPage}/>
+                            <Route path={Routers.GIFTCARDS} component={GiftCardsPage}/>
+                            <Route path={Routers.GIFTCARD_ORDERS} component={GiftCardOrdersPage}/>
+                        </Switch>
+                    </Router>
+                </PersistGate>
+            </Provider>
+        </ErrorBoundary>
     );
 }
 

@@ -28,22 +28,25 @@ const reducer = (state: any, action: AppActionType) => {
         case UPDATE_VERSION:
             newData = { ...state, version: data };
             break;
+
         case UPDATE_ACCESS_TOKEN:
             FetchDataService.SetAccessToken(data);
             LocalStorageService.SetAccessToken(data);
             newData = { ...state, accessToken: data };
             break;
+
         case UPDATE_USER:
             LocalStorageService.SetUser(data);
             newData = { ...state, user: data };
             break;
+
         case UPDATE_MESSAGE:
             newData = { ...state, message: data };
             break;
+
         case UPDATE_ERROR:
             newData = { ...state, error: data };
             break;
-
 
         case LOGOUT:
             FetchDataService.SetAccessToken("");

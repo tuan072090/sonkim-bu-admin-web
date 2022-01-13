@@ -1,5 +1,5 @@
 //  @ts-ignore
-export const CONFIGS = window._env_ || {
+export const CONFIGS = {
     SKIP_PREFLIGHT_CHECK: "true",
-    REACT_APP_API_URI: "https://api.sonsim.upme.dev"
-}
+    REACT_APP_API_URI: "https://api.sonkim.upme.dev",
+};

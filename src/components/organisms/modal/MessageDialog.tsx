@@ -1,10 +1,12 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, {useEffect, useRef} from "react";
 import styles from './modal.module.scss';
-import { AppProvider } from "../../../share";
 import Button from "../../atoms/button";
+import {UpdateMessage} from "../../../share/reducers/modal-msg";
+import {useAppSelector, useAppDispatch} from '../../../share/store'
 
 const MessageDialog = () => {
-    const { message, dispatch } = useContext(AppProvider.context)
+    const {message} = useAppSelector(state => state.modalMsg);
+    const dispatch = useAppDispatch();
 
     const dialogRef = useRef(null)
 
@@ -20,10 +22,7 @@ const MessageDialog = () => {
     }, [dialogRef, message])
 
     const _close = () => {
-        dispatch({
-            type: AppProvider.actions.UPDATE_MESSAGE,
-            data: null
-        })
+        dispatch(UpdateMessage(null))
     }
 
     const isShow = !!message;

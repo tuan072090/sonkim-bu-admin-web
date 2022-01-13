@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useContext} from "react";
+import React from "react";
 import PageHeader from "../../organisms/page-header";
 import Sidebar from "../../organisms/sidebar";
-import {AppProvider} from "../../../share";
-import LoginForm from "../../../pages/auth/conponents/LoginForm";
+import LoginForm from "../../organisms/login-form";
 import ErrorDialog from "../../organisms/modal/ErrorDialog";
 import MessageDialog from "../../organisms/modal/MessageDialog";
+import {useAppSelector} from "../../../share/store";
 
 const Layout = (Component: React.ComponentType<any>) => function Comp(props: React.PropsWithChildren<any>) {
-    const {user} = useContext(AppProvider.context);
+    const {user} = useAppSelector(state => state.auth)
 
     if (!user) {
         return (
