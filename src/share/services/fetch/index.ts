@@ -34,7 +34,7 @@ class FetchData {
 
     private handleError = (error: AxiosError) => {
         //  Need optimize
-        const message = error.response?.data?.error?.message || "Something error"
+        const message = error.response?.data?.message || "Something error"
         const status = error.response?.status || 500
         const code = error.response?.data?.error?.code || 500
         const errors = error.response?.data?.error?.errors || []

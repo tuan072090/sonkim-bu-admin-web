@@ -23,21 +23,21 @@ const Sidebar = () => {
                 <div onClick={_changeToggle} className="p-3 cursor-pointer"><Menu size={24}/></div>
 
                 <div className="py-3 mt-3 flex-grow">
-                    <MenuIcon href={Routers.HOME} active={location.pathname === Routers.HOME}
+                    <MenuIcon href={Routers.HOME.path} active={location.pathname === Routers.HOME.path}
                               icon={<Activity size={20}/>}/>
-                    <MenuIcon href={Routers.ARTICLES} active={location.pathname === Routers.ARTICLES}
+                    <MenuIcon href={Routers.ARTICLES.path} active={location.pathname === Routers.ARTICLES.path}
                               icon={<Book size={20}/>}/>
-                    <MenuIcon href={Routers.LOYALTY_PROGRAMS} active={location.pathname === Routers.LOYALTY_PROGRAMS}
+                    <MenuIcon href={Routers.LOYALTY_PROGRAMS.path} active={location.pathname === Routers.LOYALTY_PROGRAMS.path}
                               icon={<Heart size={20}/>}/>
-                    <MenuIcon href={Routers.PROMOTIONS} active={location.pathname === Routers.PROMOTIONS}
+                    <MenuIcon href={Routers.PROMOTIONS.path} active={location.pathname === Routers.PROMOTIONS.path}
                               icon={<Tag size={20}/>}/>
-                    <MenuIcon href={Routers.STORES} active={location.pathname === Routers.STORES}
+                    <MenuIcon href={Routers.STORES.path} active={location.pathname === Routers.STORES.path}
                               icon={<Archive size={20}/>}/>
-                    <MenuIcon href={Routers.USERS} active={location.pathname === Routers.USERS}
+                    <MenuIcon href={Routers.USERS.path} active={location.pathname === Routers.USERS.path}
                               icon={<Users size={20}/>}/>
-                    <MenuIcon href={Routers.GIFTCARDS} active={location.pathname === Routers.GIFTCARDS}
+                    <MenuIcon href={Routers.GIFTCARDS.path} active={location.pathname === Routers.GIFTCARDS.path}
                               icon={<CreditCard size={20}/>}/>
-                    <MenuIcon href={Routers.GIFTCARD_ORDERS} active={location.pathname === Routers.GIFTCARD_ORDERS}
+                    <MenuIcon href={Routers.GIFTCARD_ORDERS.path} active={location.pathname === Routers.GIFTCARD_ORDERS.path}
                               icon={<FileText size={20}/>}/>
                 </div>
 
@@ -58,25 +58,25 @@ const Sidebar = () => {
             </div>
 
             <div className="py-3 mt-3 flex-grow">
-                <MenuItem href={Routers.HOME} active={location.pathname === Routers.HOME} text="Dashboard"
+                <MenuItem href={Routers.HOME.path} active={location.pathname === Routers.HOME.path} text="Dashboard"
                           icon={<Activity size={20}/>}/>
 
-                <MenuItem href={Routers.ARTICLES} active={location.pathname === Routers.ARTICLES} text="Articles"
+                <MenuItem href={Routers.ARTICLES.path} active={location.pathname === Routers.ARTICLES.path} text="Articles"
                           icon={<Book size={20}/>}/>
 
-                <MenuItem href={Routers.LOYALTY_PROGRAMS} active={location.pathname === Routers.LOYALTY_PROGRAMS}
+                <MenuItem href={Routers.LOYALTY_PROGRAMS.path} active={location.pathname === Routers.LOYALTY_PROGRAMS.path}
                           text="Loyalty Programs" icon={<Heart size={20}/>}/>
 
-                <MenuItem href={Routers.PROMOTIONS} active={location.pathname === Routers.PROMOTIONS} text="Promotions"
+                <MenuItem href={Routers.PROMOTIONS.path} active={location.pathname === Routers.PROMOTIONS.path} text="Promotions"
                           icon={<Tag size={20}/>}>
                     <MenuItem.DropdownBox>
-                        <MenuItem href={Routers.PROMOTIONS} text="Thêm mới" icon={<FilePlus size={20}/>}/>
+                        <MenuItem href={Routers.PROMOTIONS.path} text="Thêm mới" icon={<FilePlus size={20}/>}/>
 
-                        <MenuItem href={Routers.PROMOTIONS} text="Danh sách" icon={<List size={20}/>}/>
+                        <MenuItem href={Routers.PROMOTIONS.path} text="Danh sách" icon={<List size={20}/>}/>
                     </MenuItem.DropdownBox>
                 </MenuItem>
 
-                <MenuItem href={Routers.STORES} active={location.pathname === Routers.STORES} text="Stores"
+                <MenuItem href={Routers.STORES.path} active={location.pathname === Routers.STORES.path} text="Stores"
                           icon={<Archive size={20}/>}/>
 
 

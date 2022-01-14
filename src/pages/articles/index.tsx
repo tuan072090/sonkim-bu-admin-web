@@ -16,7 +16,7 @@ interface DataRow {
 const columns: TableColumn<DataRow>[] = [
     {
         name: "ID",
-        cell: (row) => <a href={Routers.ARTICLES + `/${row.id}`}>{row.id}</a>,
+        cell: (row) => <a href={Routers.ARTICLES.path + `/${row.id}`}>{row.id}</a>,
         sortable: true,
         reorder: true,
         width: "100px",
@@ -55,7 +55,7 @@ const ArticlesPage: React.FC = Layout(() => {
 
     const _onRowClicked = (row: any, event: React.MouseEvent) => {
         console.log("row...", row);
-        history.push(`${Routers.ARTICLES}/${row.id}`);
+        history.push(`${Routers.ARTICLES.path}/${row.id}`);
     };
 
     useEffect(() => {

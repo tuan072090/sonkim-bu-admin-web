@@ -11,7 +11,7 @@ import { FormatVND } from "../../share/utils/formater";
 const columns: TableColumn<PromotionDataRow>[] = [
     {
         name: "ID",
-        cell: (row) => <a href={Routers.PROMOTIONS + `/${row.id}`}>{row.id}</a>,
+        cell: (row) => <a href={Routers.PROMOTIONS.path + `/${row.id}`}>{row.id}</a>,
         sortable: true,
         reorder: true,
     },
@@ -89,7 +89,7 @@ const PromotionsPage: React.FC = Layout(() => {
 
     const _onRowClicked = (row: any, event: React.MouseEvent) => {
         console.log("row...", row);
-        history.push(`${Routers.PROMOTIONS}/${row.id}`);
+        history.push(`${Routers.PROMOTIONS.path}/${row.id}`);
     };
 
     return (

@@ -9,7 +9,7 @@ import FetchDataService from "./services/fetch"; // defaults to localStorage for
 const persistedReducer = persistReducer({
     key: 'root',
     storage,
-    blacklist:[]
+    blacklist:['modalMsg']
 }, rootReducer)
 
 export const store = configureStore({

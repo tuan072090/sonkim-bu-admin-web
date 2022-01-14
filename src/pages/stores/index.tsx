@@ -10,7 +10,7 @@ import insiteApi from "../../share/services/insite-api";
 const columns: TableColumn<StoreDataRow>[] = [
     {
         name: "ID",
-        cell: (row) => <a href={Routers.STORES + `/${row.id}`}>{row.id}</a>,
+        cell: (row) => <a href={Routers.STORES.path + `/${row.id}`}>{row.id}</a>,
         sortable: true,
         reorder: true,
     },
@@ -77,7 +77,7 @@ const StoresPage: React.FC = Layout(() => {
 
     const _onRowClicked = (row: any, event: React.MouseEvent) => {
         console.log("row...", row);
-        history.push(`${Routers.STORES}/${row.id}`);
+        history.push(`${Routers.STORES.path}/${row.id}`);
     };
 
     return (

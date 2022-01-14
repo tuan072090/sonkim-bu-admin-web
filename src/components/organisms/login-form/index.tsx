@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { UpdateAccessToken, UpdateUser } from "../../../share/reducers/auth";
 import { UpdateError, UpdateMessage } from "../../../share/reducers/modal-msg";
 import { useForm } from "react-hook-form";
+import Loader from "../../atoms/loader";
 
 interface IFormInputs {
     username: string;
@@ -14,15 +15,12 @@ interface IFormInputs {
 }
 const LoginForm = () => {
     const dispatch = useDispatch();
-
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<IFormInputs>();
+    const {register, handleSubmit, formState: { errors },} = useForm<IFormInputs>();
+    const [loading, setLoading] = useState(false);
 
     const _onSubmit = async (data: IFormInputs) => {
         try {
+            setLoading(true)
             const { username, password } = data;
             const { access_token, user } =
                 await InsideApiService.AuthService.login(username, password);
@@ -34,12 +32,11 @@ const LoginForm = () => {
                     title: "Đăng nhập thành công",
                 })
             );
+            setLoading(false)
         } catch (error) {
-            dispatch(
-                UpdateError({status:400,message:"Sai thông tin đăng nhập"})
-            );
+            setLoading(false)
+            dispatch(UpdateError(error));
         }
-        console.log("xong roi ne");
     };
     return (
         <Box className="w-full max-w-md mx-auto mt-4">
@@ -47,7 +44,7 @@ const LoginForm = () => {
                 <Image src={LogoUri} width={100} />
             </div>
             <h2 className="text-center text-2xl text-indigo-900 font-display font-semibold mt-3">
-                Đăng nhập
+                Business Unit Portal
             </h2>
             <form className="mt-12 px-2" onSubmit={handleSubmit(_onSubmit)}>
                 <div>
@@ -68,9 +65,9 @@ const LoginForm = () => {
                         </p>
                     )}
                     {errors?.username?.type === "maxLength" && (
-                        <p className="italic text-xs text-red-500">
+                        <i className="mt-1 text-xs text-red-500">
                             *Không được quá 20 kí tự
-                        </p>
+                        </i>
                     )}
                 </div>
                 <div className="mt-8">
@@ -84,17 +81,18 @@ const LoginForm = () => {
                         {...register("password", { required: true })}
                     />
                     {errors?.password?.type === "required" && (
-                        <p className="italic text-xs text-red-500">
+                        <i className="mt-1 text-xs text-red-500">
                             *Không được để trống password
-                        </p>
+                        </i>
                     )}
                 </div>
                 <div className="my-10">
-                    <input
-                        type="submit"
-                        value="Đăng nhập"
-                        className="w-full bg-green-500 rounded-lg border border-green-500 ripple text-white hover:bg-green-700 py-2 px-4 text-base"
-                    />
+                    <div className="relative">
+                        {
+                            loading && <div className="absolute w-full h-full flex justify-center items-center z-40"><Loader/></div>
+                        }
+                        <Button disabled={loading} className="w-full">Đăng nhập</Button>
+                    </div>
                 </div>
             </form>
         </Box>

@@ -1,14 +1,14 @@
-import { CustomError } from 'ts-custom-error'
 
-class MyError extends CustomError {
+class MyError {
     public status: number;
+    public message: string;
     public code = 0;
     public errors: any[] = []
 
     constructor(status: number, message: string, code?: number, errors?: any[]) {
-        super(message)
 
-        this.status = status
+        this.status = status;
+        this.message = message;
         this.code = code ? code : 0
         this.errors = errors ? errors : []
     }

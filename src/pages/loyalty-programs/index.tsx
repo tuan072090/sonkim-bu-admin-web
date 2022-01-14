@@ -10,7 +10,7 @@ const columns: TableColumn<LoyaltyProgramDataRow>[] = [
     {
         name: "ID",
         cell: (row) => (
-            <a href={Routers.LOYALTY_PROGRAMS + `/${row.id}`}>{row.id}</a>
+            <a href={Routers.LOYALTY_PROGRAMS.path + `/${row.id}`}>{row.id}</a>
         ),
         sortable: true,
         reorder: true,
@@ -90,7 +90,7 @@ const LoyaltyProgramsPage: React.FC = Layout(() => {
 
     const _onRowClicked = (row: any, event: React.MouseEvent) => {
         console.log("row...", row);
-        history.push(`${Routers.LOYALTY_PROGRAMS}/${row.id}`);
+        history.push(`${Routers.LOYALTY_PROGRAMS.path}/${row.id}`);
     };
     return (
         <div>

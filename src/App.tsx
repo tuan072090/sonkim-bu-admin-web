@@ -33,19 +33,19 @@ const App = () => {
                     <Router>
                         <Switch>
                             <Route path="/" exact={true} component={DashBoardPage}/>
-                            <Route path={Routers.ARTICLES + "/:id"} exact={true} component={ArticleDetailPage}/>
-                            <Route path={Routers.ARTICLES} component={ArticlesPage}/>
-                            <Route path={Routers.LOYALTY_PROGRAMS + "/:id"} exact={true}
+                            <Route path={Routers.ARTICLE_DETAIL.path} exact={true} component={ArticleDetailPage}/>
+                            <Route path={Routers.ARTICLES.path} component={ArticlesPage}/>
+                            <Route path={Routers.LOYALTY_PROGRAM_DETAIL.path} exact={true}
                                    component={LoyaltyProgramDetailPage}/>
-                            <Route path={Routers.LOYALTY_PROGRAMS} component={LoyaltyProgramsPage}/>
-                            <Route path={Routers.PROMOTIONS + "/:id"} exact={true} component={PromotionDetailPage}/>
-                            <Route path={Routers.PROMOTIONS} component={PromotionsPage}/>
-                            <Route path={Routers.STORES + "/:id"} exact={true} component={StoreDetailPage}/>
-                            <Route path={Routers.STORES} component={StoresPage}/>
-                            <Route path={Routers.TEST} component={TestPage}/>
-                            <Route path={Routers.USERS} component={UsersPage}/>
-                            <Route path={Routers.GIFTCARDS} component={GiftCardsPage}/>
-                            <Route path={Routers.GIFTCARD_ORDERS} component={GiftCardOrdersPage}/>
+                            <Route path={Routers.LOYALTY_PROGRAMS.path} component={LoyaltyProgramsPage}/>
+                            <Route path={Routers.PROMOTION_DETAIL.path} exact={true} component={PromotionDetailPage}/>
+                            <Route path={Routers.PROMOTIONS.path} component={PromotionsPage}/>
+                            <Route path={Routers.STORE_DETAIL.path} exact={true} component={StoreDetailPage}/>
+                            <Route path={Routers.STORES.path} component={StoresPage}/>
+                            <Route path={Routers.TEST.path} component={TestPage}/>
+                            <Route path={Routers.USERS.path} component={UsersPage}/>
+                            <Route path={Routers.GIFTCARDS.path} component={GiftCardsPage}/>
+                            <Route path={Routers.GIFTCARD_ORDERS.path} component={GiftCardOrdersPage}/>
                         </Switch>
                     </Router>
                 </PersistGate>

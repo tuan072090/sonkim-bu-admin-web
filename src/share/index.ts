@@ -9,9 +9,4 @@ import InsideApiService from './services/insite-api'
 import {useLocalStorage} from "./hooks/useLocalStorage";
 import {useDebounce} from "./hooks/useDebounce";
 
-//  data type
-
-export { AppProvider, Routers, Validator, useLocalStorage, useDebounce, InsideApiService };
-
-
-//  data type
+export {AppProvider, Routers, Validator, useLocalStorage, useDebounce, InsideApiService};

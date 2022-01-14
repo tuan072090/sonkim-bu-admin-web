@@ -1,7 +1,7 @@
-import React, { MouseEvent } from "react";
-import { ButtonProps } from "./Button.types";
+import React, {MouseEvent} from "react";
+import {ButtonProps} from "./Button.types";
 
-const Button: React.FC<ButtonProps> = ({ children, onClick, color = 'primary', size = "medium", outline = false, ...props }) => {
+const Button: React.FC<ButtonProps> = ({children, onClick, color = 'primary', size = "medium", outline = false, disabled, ...props}) => {
 
     const _onClick = (event: MouseEvent<HTMLButtonElement>) => {
 
@@ -18,7 +18,9 @@ const Button: React.FC<ButtonProps> = ({ children, onClick, color = 'primary', s
         button.appendChild(circle)
 
         //  remove after 600 ms
-        setTimeout(() => { circle.remove() }, 600)
+        setTimeout(() => {
+            circle.remove()
+        }, 600)
 
         if (onClick) {
             onClick(event)
@@ -28,7 +30,8 @@ const Button: React.FC<ButtonProps> = ({ children, onClick, color = 'primary', s
     const classButtonSize = size === "small" ? "py-1 px-3" : size === "medium" ? "py-2 px-4" : "py-4 px-6"
 
     //  button background
-    const classButtonBg = outline ? 'bg-transparent' : "bg-"+color+"-500"
+    let classButtonBg = outline ? 'bg-transparent' : "bg-" + color + "-500";
+    if(disabled) classButtonBg += " opacity-70"
 
     //  button border
     const classOutline = `border border-${color}-500`
@@ -47,8 +50,8 @@ const Button: React.FC<ButtonProps> = ({ children, onClick, color = 'primary', s
 
     return (
         <button {...props}
-            onClick={_onClick}
-            className={`${classButtonBg} ${classOutline} ${rippleClass} ${classTextColor} ${classHover} ${classButtonSize} ${classTextSize} rounded-lg ${props.className}`}>
+                onClick={_onClick}
+                className={`${classButtonBg} ${classOutline} ${rippleClass} ${classTextColor} ${classHover} ${classButtonSize} ${classTextSize} rounded-lg ${props.className}`}>
             {children}
         </button>
     )

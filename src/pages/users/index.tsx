@@ -10,7 +10,7 @@ import insiteApi from "../../share/services/insite-api";
 const columns: TableColumn<UserDataRow>[] = [
     {
         name: "ID",
-        cell: (row) => <a href={Routers.USERS + `/${row.id}`}>{row.id}</a>,
+        cell: (row) => <a href={Routers.USERS.path + `/${row.id}`}>{row.id}</a>,
         sortable: true,
         reorder: true,
     },

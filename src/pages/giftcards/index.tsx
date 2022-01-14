@@ -11,7 +11,7 @@ import { FormatVND } from '../../share/utils/formater'
 const columns:TableColumn<GiftCardDataRow>[]=[
     {
         name:"ID",
-        cell:(row)=><a href={Routers.GIFTCARDS+`/${row.id}`}>{row.id}</a>,
+        cell:(row)=><a href={Routers.GIFTCARDS.path+`/${row.id}`}>{row.id}</a>,
         sortable:true,
         reorder:true
     },
@@ -54,7 +54,7 @@ const columns:TableColumn<GiftCardDataRow>[]=[
         reorder: true,
         center: true,
     },
-    
+
 ]
 
 const GiftCardsPage:React.FC=Layout(()=> {
@@ -72,7 +72,7 @@ const GiftCardsPage:React.FC=Layout(()=> {
 
     const _onRowClicked = (row: any, event: React.MouseEvent) => {
         console.log("row...", row);
-        history.push(`${Routers.PROMOTIONS}/${row.id}`);
+        history.push(`${Routers.PROMOTIONS.path}/${row.id}`);
     };
 
     useEffect(()=>{
@@ -91,7 +91,7 @@ const GiftCardsPage:React.FC=Layout(()=> {
                     />
                 </Box>}
         </div>
-        
+
     )
 })
 
