@@ -1,7 +1,7 @@
 @baseUrl = https://api.sonkim.upme.dev/bu-api
 # @baseUrl = http://localhost:1337/bu-api
 
-@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYnVzIjpbMV0sImlhdCI6MTY0MTI4NjkwNywiZXhwIjoxNjQxNTQ2MTA3fQ.jXA6dkuS9eopvR1CbCgtRQD725brXsSyDhKWQ9yHLsc
+@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYnVzIjpbMV0sImlhdCI6MTY0MjUyMjUzMywiZXhwIjoxNjQyNzgxNzMzfQ.9H7OJerUyTFaXi6036Y0R3Uw7tvTJW8n5-2xjAsvMvc
 @refresh_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0a3YiOm51bGwsImlhdCI6MTY0MDY3NzczNywiZXhwIjoxNjQ1ODYxNzM3LCJzdWIiOiI5In0.eWd9Rb-VDlJsaMlVzrtGyOq6zlvtKM9UCuW7owXk8Wo
 
 ### Login

@@ -72,7 +72,7 @@ const GiftCardsPage:React.FC=Layout(()=> {
 
     const _onRowClicked = (row: any, event: React.MouseEvent) => {
         console.log("row...", row);
-        history.push(`${Routers.PROMOTIONS.path}/${row.id}`);
+        history.push(`${Routers.GIFTCARDS.path}/${row.id}`);
     };
 
     useEffect(()=>{
@@ -84,7 +84,7 @@ const GiftCardsPage:React.FC=Layout(()=> {
                     <Loader status="info" />
                 </div>:<Box>
                     <DataTableBase
-                        title="Users list"
+                        title="GiftCard list"
                         columns={columns}
                         data={giftCards}
                         onRowClicked={_onRowClicked}

@@ -5,7 +5,6 @@ export interface GiftCardOrderDataRow{
     code:string,
     gift_card:GiftCardDataRow,
     point_history:PointHistoryType,
-
 }
 
 export interface PointHistoryType{
