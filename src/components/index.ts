@@ -25,6 +25,7 @@ import LineChartCpn from './organisms/charts/LineChart';
 import BarChartCpn from './organisms/charts/BarChart';
 import PieChartCpn from './organisms/charts/PieChart';
 import AreaChartCpn from './organisms/charts/AreaChart';
+import FilterTable from './organisms/filter-table';
 //  templates
 import Layout from "./templates/layout";
 import ErrorFallback from './organisms/error-fallback';
@@ -55,6 +56,7 @@ export {
     BarChartCpn,
     PieChartCpn,
     AreaChartCpn,
+    FilterTable,
     ErrorFallback,
     //  templates
     Layout,
