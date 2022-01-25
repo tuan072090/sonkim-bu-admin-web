@@ -59,12 +59,24 @@ const Routers = {
         path: '/users',
         title: 'Thành viên'
     },
+    USER_DETAIL: {
+        path: '/users/:id',
+        title: 'Thành viên'
+    },
     GIFTCARDS: {
         path: '/gift-cards',
         title: 'Thẻ quà tặng'
     },
+    GIFTCARD_DETAIL: {
+        path: '/gift-cards/:id',
+        title: 'Thẻ quà tặng'
+    },
     GIFTCARD_ORDERS: {
         path: '/gift-card-orders',
+        title: 'Đơng hàng thẻ quà tặng'
+    },
+    GIFTCARD_ORDER_DETAIL: {
+        path: '/gift-card-orders/:id',
         title: 'Đơng hàng thẻ quà tặng'
     },
     TEST: {
