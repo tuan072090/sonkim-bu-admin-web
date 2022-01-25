@@ -59,7 +59,7 @@ const columns=[
         filterable: false,
         renderCell: (params) => {
             //  @ts-ignore
-            const path = Routers.ARTICLE_DETAIL.path.replace(":id", params.id);
+            const path = Routers.LOYALTY_PROGRAM_DETAIL.path.replace(":id", params.id);
 
             return (
                 <>
