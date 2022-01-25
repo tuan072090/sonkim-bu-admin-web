@@ -21,7 +21,7 @@ const columns=[
         headerName: 'Image',
         sortable: false,
         filterable: false,
-        width: 130,
+        flex:1,
         renderCell: (params: GridRenderCellParams) => {
             // if(!params.value) return <image src={"/error-image.jpg"} style={{height: 60, maxWidth: '100%'}}/>
             console.log(params.row.avatar.formats.thumbnail.url)
