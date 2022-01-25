@@ -1,96 +1,114 @@
+import { DeleteOutline, Edit } from '@mui/icons-material'
+import { Card, Tooltip } from '@mui/material'
+import { GridRenderCellParams } from '@mui/x-data-grid'
 import React, { useEffect, useState } from 'react'
-import { TableColumn } from 'react-data-table-component'
-import { useHistory } from 'react-router-dom'
-import { Box, DataTableBase, Layout } from '../../components'
-import Loader from '../../components/atoms/loader'
+import { useDispatch } from 'react-redux'
+import { Link, useHistory } from 'react-router-dom'
+import { Box, DataTableBase, FilterTable, Layout } from '../../components'
 import { Routers } from '../../share'
-import { GiftCardDataRow } from '../../share/data-types/giftcard'
+import { UpdateError } from '../../share/reducers/modal-msg'
 import insiteApi from '../../share/services/insite-api'
 import { FormatVND } from '../../share/utils/formater'
 
-const columns:TableColumn<GiftCardDataRow>[]=[
-    {
-        name:"ID",
-        cell:(row)=><a href={Routers.GIFTCARDS.path+`/${row.id}`}>{row.id}</a>,
-        sortable:true,
-        reorder:true
-    },
-    {
-        name:'Title',
-        selector:(row)=>row.title,
-        sortable:true,
-        reorder:true
-    },
-    {
-        name: "Image",
-        cell: (row) => (
-            <img
-                src={row.avatar.formats.thumbnail.url}
-                width={"auto"}
-                height={"auto"}
-            />
-        ),
-        reorder: true,
-        center: true,
-    },
-    {
-        name: "Cash",
-        selector: (row) => FormatVND(row.cash),
-        sortable: true,
-        reorder: true,
-        center: true,
-    },
-    {
-        name: "Price",
-        selector: (row) => FormatVND(row.price),
-        sortable: true,
-        reorder: true,
-        center: true,
-    },
-    {
-        name: "Price Sale",
-        selector: (row) => FormatVND(row.sale_price),
-        sortable: true,
-        reorder: true,
-        center: true,
-    },
 
+const columns=[
+    {field:'id',headerName:'ID',type:'number',width:30},
+    {field: 'title', headerName: 'Title', flex: 1},
+    {
+        field: 'image',
+        headerName: 'Image',
+        sortable: false,
+        filterable: false,
+        flex:1,
+        renderCell: (params: GridRenderCellParams) => {
+            // if(!params.value) return <image src={"/error-image.jpg"} style={{height: 60, maxWidth: '100%'}}/>
+            return (<img
+                src={params.row.avatar.formats.thumbnail.url}
+                width={80} height={80}/>)
+        }
+    },
+    {
+        field: 'cash',
+        headerName: 'Cash', 
+        flex: 1,
+        renderCell:(params)=>{
+            console.log(params.row)
+            return (
+                <div>{FormatVND(params.row.cash)}</div>
+            )
+        }
+    },
+    {
+        field: 'price',
+        headerName: 'Price', 
+        flex: 1,
+        renderCell:(params)=>{
+            return (
+                <div>{FormatVND(params.row.price)}</div>
+            )
+        }
+    },
+    {
+        field: 'sale_price',
+        headerName: 'Sale price', 
+        flex: 1,
+        renderCell:(params)=>{
+            return (
+                <div>{FormatVND(params.row.sale_price)}</div>
+            )
+        }
+    },
+    {
+        field: 'action', headerName: '#', sortable: false,
+        filterable: false,
+        renderCell: (params) => {
+            //  @ts-ignore
+            const path = Routers.GIFTCARD_DETAIL.path.replace(":id", params.id);
+
+            return (
+                <>
+                    <Link to={path}>
+                        <Tooltip title="Chỉnh sửa">
+                            <Edit color="info"/>
+                        </Tooltip>
+                    </Link>
+                    <Link to={path}>
+                        <Tooltip title="Xoá">
+                            <DeleteOutline color="error"/>
+                        </Tooltip>
+                    </Link>
+                </>
+            )
+        }
+    }
 ]
 
 const GiftCardsPage:React.FC=Layout(()=> {
     const [giftCards,setGiftCards]=useState<null|any[]>(null);
-    const history=useHistory();
+    const appDispatch=useDispatch();
 
-    const _fetchGiftCards=async ()=>{
+    const _fetchGiftCards=async (filterData:any)=>{
         try {
-            const {count,gift_cards}=await insiteApi.GiftCardService.getGiftCards();
+            const {count,gift_cards}=await insiteApi.GiftCardService.getGiftCards(filterData);
             setGiftCards(gift_cards);
         } catch (error) {
             console.log(error);
+            appDispatch(UpdateError(error));
         }
     }
 
-    const _onRowClicked = (row: any, event: React.MouseEvent) => {
-        console.log("row...", row);
-        history.push(`${Routers.GIFTCARDS.path}/${row.id}`);
-    };
-
-    useEffect(()=>{
-        _fetchGiftCards()
-    },[])
+    const _onFilterChange=(newFilter:any)=>{
+        _fetchGiftCards(newFilter);
+    }
     return (
-        <div>
-            {!giftCards?<div className="flex justify-center items-center">
-                    <Loader status="info" />
-                </div>:<Box>
-                    <DataTableBase
-                        title="GiftCard list"
-                        columns={columns}
-                        data={giftCards}
-                        onRowClicked={_onRowClicked}
-                    />
-                </Box>}
-        </div>
+        <Card>
+            <FilterTable
+                onFilterChange={_onFilterChange}
+                data={giftCards?{data:giftCards,count:giftCards.length}:null}
+                detailRoute={Routers.GIFTCARD_DETAIL.path}
+                columns={columns}
+            />
+        </Card>
 
     )
 })
